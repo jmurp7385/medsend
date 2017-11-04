@@ -19,7 +19,16 @@
   </nav>
 
   <div id="welcome">
-      <p>Welcome, {{username}}!</p>
+    <div id="welcome-grid">
+      <div id="welcome-text">
+        <p>Welcome, {{username}}!</p>
+      </div>
+      <div id="request-button">
+        <form method="get" action='/request/{{userid}}'>
+          <input type="submit" value="Request">
+        </form>
+      </div>
+    </div>
   </div>
   <!-- <h1 class ="welcome"> Welcome, {{username}} </h1> -->
     {% for item in requests %}
