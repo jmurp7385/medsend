@@ -48,26 +48,16 @@ def donor():
 	          "status"   : 1,
 	          "fileName" : "../static/images/crutches-01.jpg"},
 	         {"userID"   : 1,
-<<<<<<< HEAD
 	          "itemType" : "Wheelchair",
-	          "status"   : 2, 
-=======
-	          "itemType" : "wheelchair",
 	          "status"   : 2,
->>>>>>> 89289e66d78f407672a99da1dbe5fb8f9e4423c8
 	          "fileName" : "../static/images/wheelchair-01.jpg"},
 	         {"userID"   : 1,
 	          "itemType" : "Crutches",
 	          "status"   : 3,
 	          "fileName" : "../static/images/crutches-01.jpg"},
 	         {"userID"   : 1,
-<<<<<<< HEAD
 	          "itemType" : "Wheelchair",
-	          "status"   : 1, 
-=======
-	          "itemType" : "wheelchair",
 	          "status"   : 1,
->>>>>>> 89289e66d78f407672a99da1dbe5fb8f9e4423c8
 	          "fileName" : "../static/images/wheelchair-01.jpg"},
 	         {"userID"   : 1,
 	          "itemType" : "Crutches",
@@ -82,13 +72,10 @@ def donor():
 	          "status"   : 1,
 	          "fileName" : "../static/images/crutches-01.jpg"},
 	         {"userID"   : 1,
-<<<<<<< HEAD
 	          "itemType" : "Wheelchair",
 	          "status"   : 2, 
-=======
 	          "itemType" : "wheelchair",
 	          "status"   : 2,
->>>>>>> 89289e66d78f407672a99da1dbe5fb8f9e4423c8
 	          "fileName" : "../static/images/wheelchair-01.jpg"}]
 
 	return render_template('donor.html', user=user,
