@@ -32,7 +32,7 @@ def index():
 @app.route('/donor')
 def donor():
 	title = "MedSend"
-	users = [{"firstName" : "Kenny", 
+	users = [{"firstName" : "Kenny",
 	        "lastName" : "Brawner",
 	        "numDonations" : 8,
 	        "userID" : 1}]
@@ -44,7 +44,7 @@ def donor():
 	          "fileName" : "../static/images/crutches-01.jpg"},
 	         {"userID"   : 1,
 	          "itemType" : "wheelchair",
-	          "status"   : 2, 
+	          "status"   : 2,
 	          "fileName" : "../static/images/wheelchair-01.jpg"},
 	         {"userID"   : 1,
 	          "itemType" : "crutches",
@@ -52,7 +52,7 @@ def donor():
 	          "fileName" : "../static/images/crutches-01.jpg"},
 	         {"userID"   : 1,
 	          "itemType" : "wheelchair",
-	          "status"   : 1, 
+	          "status"   : 1,
 	          "fileName" : "../static/images/wheelchair-01.jpg"},
 	         {"userID"   : 1,
 	          "itemType" : "crutches",
@@ -68,11 +68,11 @@ def donor():
 	          "fileName" : "../static/images/crutches-01.jpg"},
 	         {"userID"   : 1,
 	          "itemType" : "wheelchair",
-	          "status"   : 2, 
+	          "status"   : 2,
 	          "fileName" : "../static/images/wheelchair-01.jpg"}]
-	           
-	return render_template('donor.html', user=user, 
-		                                 title=title, 
+
+	return render_template('donor.html', user=user,
+		                                 title=title,
 		                                 items=items)
 
 @app.route('/donee')
