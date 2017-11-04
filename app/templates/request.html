@@ -19,24 +19,24 @@
     </nav>
 
     <div class="form-style-5">
-        <form action="/update_requests" method="post">
+        <form action="/donee/{{userid}}" method="post">
             <fieldset>
-                <legend><span class="number">1</span> Request Info</legend>
-                
-                <label for="job">Interests:</label>
-                <select id="job" name="field4">
+                <legend><span class="number">1</span> Request Supplies</legend>
+
+                <label for="job">What supplies do you need?</label>
+                <select id="job" name="item_type">
                     <option value="null"></option>
                     <option value="crutches">Crutches</option>
-                    <option value="canes">Cane</option>
-                    <option value="wchair">Wheelchair</option>
+                    <option value="cane">Cane</option>
+                    <option value="wheelchair">Wheelchair</option>
                     <option value="walker">Walker</option>
                     <option value="stretcher">Stretcher</option>
-                    <option value="fractureboot">Fracture Boot</option>
+                    <option value="fracture boot">Fracture Boot</option>
                     <option value="other">Other</option>
                 </select>
 
-                <label for="job">Quantity:</label>
-                <select id="job0" name="field3">
+                <label for="job">How many do you need?</label>
+                <select id="job0" name="amount">
                         <option value="0"></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -53,7 +53,7 @@
             </fieldset>
             <fieldset>
                 <legend><span class="number">2</span>Please, describe your need in further detail.</legend>
-                <textarea name="field3" placeholder="About Your School"></textarea>
+                <textarea name="field3" placeholder="Describe your situation"></textarea>
             </fieldset>
             <input type="submit" value="Apply" />
         </form>

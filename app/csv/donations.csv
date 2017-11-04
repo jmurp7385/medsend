@@ -4,3 +4,6 @@ userid,item_type,image,date_donated,date_distributed
 1,stretcher,static/img/stretcher-01.jpeg,2017-05-06,2017-07-18
 1,wheelchair,static/img/wheelchair-01.jpeg,2017-07-04,2017-09-18
 1,stretcher,static/img/stretcher-01.jpeg,2017-05-06,2017-07-18
+3,stretcher,static/img/stretcher-01.jpeg,2017-05-06,2017-07-18
+3,wheelchair,static/img/wheelchair-01.jpeg,2017-07-04,2017-09-18
+3,stretcher,static/img/stretcher-01.jpeg,2017-05-06,2017-07-18

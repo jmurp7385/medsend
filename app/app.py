@@ -1,5 +1,7 @@
 from flask import Flask,jsonify,request,redirect
 from flask import render_template
+from datetime import datetime
+import time
 import sys
 import os
 import csv
@@ -9,20 +11,34 @@ import math
 
 app = Flask(__name__)
 
+ref_userid = 5
+
 db_path = os.path.join(app.root_path, "db/database.db")
 
-class User:
-  def __init__(self, name):
-    self.name = name
-    self.requested = ["car", "crutches", "rock"]
-    self.requested2 = ["wheelchair", "heelies"]
+icons = {
+  'crutches': 'static/img/svg/crutches-icon-01.svg',
+  'cane': '',
+  'wheelchair': 'static/img/svg/wheelchair-icon-01.svg',
+  'stretcher': 'static/img/svg/stretcher-icon-01.svg',
+  'walker': '',
+  'fracture boot': '',
+}
+
+images = {
+  'crutches': 'static/img/crutches-02.jpeg',
+  'cane': '',
+  'wheelchair': 'static/img/wheelchair-01.jpeg',
+  'stretcher': 'static/img/stretcher-01.jpeg',
+  'walker': '',
+  'fracture boot': '',
+}
 
 @app.route('/')
 def index():
   create_db()
   conn = sqlite3.connect(db_path)
   c = conn.cursor()
-  orders = c.execute("SELECT * from donations where date_distributed > 2017-01-01")
+  orders = c.execute("SELECT * from donations where date_distributed > 2017-01-01 LIMIT 5")
   data = c.fetchall()
   donations = donations_dict_arr(data)
   return render_template('index.html', donations=donations)
@@ -67,15 +83,19 @@ def new_acc_login():
   username = request.form['username']
   password = request.form['password']
   password2 = request.form['password2']
+  user_type = request.form['type']
   if password != password2 or username == '':
     return redirect('/new_account',method="get")
-  new_user.append(request.form['username'])
+  new_user.append(userid)
+  new_user.append(username)
   new_user.append(password)
-  new_user.append(password2)
-  new_user.append(type)
+  new_user.append(user_type)
+  print(new_user)
   conn = sqlite3.connect(db_path)
   c = conn.cursor()
   c.execute("INSERT INTO users VALUES (?,?,?,?)", new_user)
+  conn.commit()
+  ref_userid += 1
   return redirect('/donor/4')
 
 @app.route('/donor/<userid>')
@@ -91,7 +111,6 @@ def donor(userid):
   username = ""
   for d in data:
     username = d[1]
-
   return render_template('donor.html', username=username,
 		                                 title=title,
 		                                 donations=donations)
@@ -105,6 +124,10 @@ def request_item():
     title = "MedSend"
     user = User('john doe')
     return render_template('request.html', user=user, title=title, donations = donations)
+
+@app.route('/request/<userid>', methods=['GET'])
+def request_item(userid):
+    return render_template('request.html',userid=userid)
 
 @app.route('/organization/<userid>')
 def organization(userid):
@@ -121,9 +144,8 @@ def organization(userid):
       username = d[1]
     return render_template('organization.html', username=username, title=title, requests = requests)
 
-@app.route('/donee/<userid>')
+@app.route('/donee/<userid>', methods=['GET'])
 def donee(userid):
-    title = "MedSend"
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
     orders = c.execute("SELECT * from requests where userid == "+userid+"")
@@ -134,7 +156,28 @@ def donee(userid):
     username = ""
     for d in data:
       username = d[1]
-    return render_template('donee.html', username=username, title=title, requests = requests)
+    return render_template('donee.html', username=username, userid=userid, requests = requests)
+
+@app.route('/donee/<userid>', methods=['POST'])
+def donee_requests_update(userid):
+    item = request.form['item_type']
+    new_request = []
+    new_request.append(userid)
+    new_request.append(request.form['item_type'])
+    new_request.append(icons[item])
+    new_request.append(images[item])
+    now = datetime.now()
+    today = str(now.strftime('%Y/%m/%d'))
+    today = today.replace('/','-')
+    new_request.append(today)
+    new_request.append("")
+    new_request.append(request.form['amount'])
+    print(new_request)
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    c.execute("INSERT INTO requests VALUES (?,?,?,?,?,?,?)", new_request)
+    conn.commit()
+    return redirect('/donee/'+userid)
 
 
 if __name__=='__main__':
@@ -148,7 +191,6 @@ def requests_dict_arr(data):
     item['item_type'] = d[1]
     item['icon'] = d[2]
     item['image'] = d[3]
-    print(d[3])
     item['date_requested'] = d[4]
     item['date_received'] = d[5]
     donations.append(item)
@@ -217,7 +259,8 @@ def create_db():
                 icon text,
                 image text,
                 date_requested text,
-                date_received text)''')
+                date_received text,
+                amount int)''')
   file_name = app.root_path+'/csv/requests.csv'
   f = open(file_name,'rt')
   reader = csv.reader(f)
@@ -227,6 +270,6 @@ def create_db():
       column_names = False
       print('ROW SKIPPED',row)
     else:
-      c.execute("INSERT INTO requests VALUES (?,?,?,?,?,?)", row)
+      c.execute("INSERT INTO requests VALUES (?,?,?,?,?,?,?)", row)
   conn.commit()
   f.close()
