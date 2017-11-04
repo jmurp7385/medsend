@@ -9,19 +9,14 @@
   {% if title %}
     <h1 class="title">{{title}}</h1>
   {% endif %}
-    <h2>{{ user.name }}</h2>
-    <h2> Items you have requested </h2>
+    <h2> <a href="/donee_profile"> {{ user.name }} </a> </h2>
+    <h2> Items you have requested: </h2>
     {% for type in user.requested %}
-        {% if donations[type] %}
-            <h2> For {{type}} we have </h2>
-            {% for a_item in donations[type] %}
-                <h3> {{a_item}} </h3>
-            {% endfor %}
-        {% else %}
-        {% endif %}
+        <p> {{type}} </p>
     {% endfor %}
+
    <form action="/update_requests" method="post">
-       Item in need:<br>
+       <h2> Item in need:<br> </h2>
        <select name="needed items" >
            {% for type in donations.keys()  %}
            <option value="{{type}}">{{type}}</option>
