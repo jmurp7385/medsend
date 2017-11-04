@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>MedSend</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/donee_profile.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/donee.css') }}">
 </head>
 <body>
 	<ul>
@@ -13,25 +13,31 @@
 	  <li><a href="#contact">Contact</a></li>
 	  <li><a href="#about">About</a></li>
 	</ul>
-    {% for item in user.requested2 %}
+    {% for item in requests %}
     <div class="outergrid" >
     <div class="entry">
-        <img src="{{item['image']}}" alt ="item['name']" class="picture" >
+        {% if data_received %}
+        <img src="../{{item.image}}" alt ="{{item.item_type}}" class="picture">
         <div class="name">
-            <h2> {{ item['name'] }} </h2>
+            <h2> {{ item['item_type'] }} </h2>
             <span>[status]</span>
             <div class="progress" >
-                {% for n in range(0,6) %}
-                    {% if n <= status %}
                 <div class="complete" >
-                    {{ progression[n] }}
+                    Request complete!
                  </div>
                  {% else %}
-                 <div class="incomplete" >
-                    {{ progression[n] }}
-                 </div>
+                 <img src="../{{item.icon}}" alt ="{{item.item_type}}" class="picture">
+                 <div class="name">
+                     <h2> {{ item['item_type'] }} </h2>
+                     <span>[status]</span>
+                     <div class="progress" >
+                         <div class="complete" >
+                             Request complete!
+                         </div>
+                         <div class="incomplete" >
+                             Request pending.
+                         </div>
                  {% endif %}
-                 {% endfor %}
             </div>
 
         </div>
