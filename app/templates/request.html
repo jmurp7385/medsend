@@ -1,36 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>MedSend</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  {% if title %}
-    <h1 class="title">{{title}}</h1>
-  {% endif %}
-    <h2> <a href="/donee_profile"> {{ user.name }} </a> </h2>
-    <h2> Items you have requested: </h2>
-    {% for type in user.requested %}
-        <p> {{type}} </p>
-    {% endfor %}
 
-   <form action="/update_requests" method="post">
-       <h2> Item in need:<br> </h2>
-       <select name="needed items" >
-           {% for type in donations.keys()  %}
-           <option value="{{type}}">{{type}}</option>
-           {% endfor %}
-       </select>
-       <select name="quantity">
-           {% for n in range(1,10) %}
-           <option value="{{n}}">{{n}}</option>
-           {% endfor %}
-           <option value="greater than 10">10+</option>
-       </select>
-       <input type ="submit">
-   </form>
+<head>
+    <meta charset="UTF-8">
+    <title>MedSend</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/request.css') }}">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="logo"><a class="logo active" href="/">Medsend</a></li>
+            <li class="logout"><a href="/">Logout</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="form-style-5">
+        <form action="/update_requests" method="post">
+            <fieldset>
+                <legend><span class="number">1</span> Request Info</legend>
+                
+                <label for="job">Interests:</label>
+                <select id="job" name="field4">
+                    <option value="null"></option>
+                    <option value="crutches">Crutches</option>
+                    <option value="canes">Cane</option>
+                    <option value="wchair">Wheelchair</option>
+                    <option value="walker">Walker</option>
+                    <option value="stretcher">Stretcher</option>
+                    <option value="fractureboot">Fracture Boot</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="job">Quantity:</label>
+                <select id="job0" name="field3">
+                        <option value="0"></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10+">10+</option>
+                    </select>
+
+            </fieldset>
+            <fieldset>
+                <legend><span class="number">2</span>Please, describe your need in further detail.</legend>
+                <textarea name="field3" placeholder="About Your School"></textarea>
+            </fieldset>
+            <input type="submit" value="Apply" />
+        </form>
+    </div>
 
 
 </body>
+
 </html>
