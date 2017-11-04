@@ -74,7 +74,7 @@ def request():
     return render_template('request.html', user=user, title=title, donations = donations)
 
 @app.route('/donee/<userid>')
-def donee():
+def donee(userid):
     wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
     heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
     donations = {'car' : ['honda', 'tesla'],
