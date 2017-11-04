@@ -1,20 +1,19 @@
-#pageGrid {
-	display: grid;
-	grid-template-areas: "header header"
-	                     "welcome numItems"
-	                     "gallery gallery";
-
-	grid-template-rows: auto;
-	grid-template-columns: 1fr 1fr;
+html {
+	text-align: center;
 }
 
 body {
-	color: #24305E;
+    display: inline-block;
+    margin: 0px auto;
+    text-align: center;
 }
 
-#header {
-	grid-area: header;
-	height: 50px;
+#pageGrid {
+	display: grid;
+	grid-template-areas: "welcome numItems"
+	                     "gallery gallery";
+	grid-template-rows: auto;
+	grid-template-columns: 1fr 1fr;
 }
 
 #welcome {
@@ -39,6 +38,7 @@ body {
 #gallery {
 	grid-area: gallery;
 	background-color: #F76C6C;
+	border-radius: 20px;
 }
 
 #galleryGrid {
@@ -58,7 +58,7 @@ body {
 }
 
 .galleryImage {
-	border-bottom-width: 100%;
+	margin: auto;
 }
 
 .donationData {
@@ -75,11 +75,10 @@ body {
 
 #gallery img {
 	display: block;
+	vertical-align: middle;
     border: 1px solid #ccc;
     border-radius: 20px;
     margin: auto;
-    margin-bottom: 5px;
-    margin-top: 5px;
     width: 50%;
 }
 
