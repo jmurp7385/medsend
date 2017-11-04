@@ -1,5 +1,7 @@
 body {
   background-color: #a8d0e6;
+  width: 90%;
+  margin: auto;
 }
 
 .center {
@@ -19,11 +21,6 @@ nav {
   margin: auto;
   text-align: center;
   margin-bottom: 10px;
-}
-
-body {
-  width: 90%;
-  margin: auto;
 }
 
 .logo{
