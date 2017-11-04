@@ -8,14 +8,17 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
+ <!-- Nav Bar -->
  <nav>
- <ul>
-    <li style="float:left"class="logo"><a class="logo" href="#home">Medsend</a></li>
-    <li style="padding-right:15px"><a class="active" href="#logout">Logout</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#about">About</a></li>
-  </ul>
+  <ul>
+     <li style="float:left"class="logo"><a class="logo" href="#home">Medsend</a></li>
+     <li style="padding-right:15px"><a class="active" href="#logout">Logout</a></li>
+     <li><a href="#contact">Contact</a></li>
+     <li><a href="#about">About</a></li>
+   </ul>
   </nav>
+
+  <!-- Grid Content -->
   <div class=grid-wrapper>
     <div class="recent-donations-wrapper">
     {% for donation in donations %}

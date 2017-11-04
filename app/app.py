@@ -42,7 +42,7 @@ def login():
   if data == "donor":
     return redirect('/donor/1')
   else:
-    return redirect('/')
+    return redirect('/donee/2')
 
 @app.route('/donor/<userid>')
 def donor(userid):
@@ -101,7 +101,7 @@ def request():
     user = User('john doe')
     return render_template('request.html', user=user, title=title, donations = donations)
 
-@app.route('/donee')
+@app.route('/donee/<userid>')
 def donee():
     wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
     heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
