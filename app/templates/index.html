@@ -14,10 +14,11 @@
     {% for donation in donations %}
       <div class="donation-grid-wrapper">
         <img class="item-img" src={{donation.image}} alt="image goes here">
-        {% if donation.item_type[donation.item_type.length-1] == 's' %}
+        {% if donation.item_type[donation.item_type|length-1] == 's' %}
           <h2 class="descr">{{donation.item_type}} were distributed on {{donation.date_distributed}}</h2>
         {% else %}
-          <h2 class="descr">{{donation.item_type}} were distributed on {{donation.date_distributed}}</h2>
+          <h2 class="descr">{{donation.item_type}} was distributed on {{donation.date_distributed}}</h2>
+        {% endif %}
       </div>
     {% endfor %}
     </div>
