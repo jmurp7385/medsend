@@ -2,6 +2,10 @@ body {
   background-color: #a8d0e6;
 }
 
+.center {
+  margin: auto;
+}
+
 .title {
   margin: auto;
   color: #f76c6c;
