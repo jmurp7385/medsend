@@ -44,6 +44,14 @@ def login():
   else:
     return redirect('/donee/2')
 
+@app.route('/contact')
+def contact():
+  return render_template('contact.html')
+
+@app.route('/about')
+def about():
+  return render_template('about.html')
+
 @app.route('/donor/<userid>')
 def donor(userid):
   conn = sqlite3.connect(db_path)
