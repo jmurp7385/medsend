@@ -46,49 +46,21 @@ def login():
 
 @app.route('/donor/<userid>')
 def donor(userid):
-	title = "MedSend"
-	users = [{"firstName" : "Kenny",
-	        "lastName" : "Brawner",
-	        "numDonations" : 8,
-	        "userID" : 1}]
-	user = users[0]
+  conn = sqlite3.connect(db_path)
+  c = conn.cursor()
+  orders = c.execute("SELECT * from donations where userid == "+userid+"")
+  data = c.fetchall()
+  donations = donations_dict_arr(data)
+  title = "MedSend"
+  orders = c.execute("SELECT * from users where id == "+userid+"")
+  data = c.fetchall()
+  username = ""
+  for d in data:
+    username = d[1]
 
-	items = [{"userID"   : 1,
-	          "itemType" : "Crutches",
-	          "status"   : 1,
-	          "fileName" : "../static/img/crutch.jpeg"},
-	         {"userID"   : 1,
-	          "itemType" : "Wheelchair",
-	          "status"   : 2,
-	          "fileName" : "../static/img/wheelchair-01.jpg"},
-	         {"userID"   : 1,
-	          "itemType" : "Crutches",
-	          "status"   : 3,
-	          "fileName" : "../static/img/crutch.jpeg"},
-	         {"userID"   : 1,
-	          "itemType" : "Wheelchair",
-	          "status"   : 1,
-	          "fileName" : "../static/img/wheelchair-01.jpg"},
-	         {"userID"   : 1,
-	          "itemType" : "Crutches",
-	          "status"   : 2,
-	          "fileName" : "../static/img/crutch.jpeg"},
-	         {"userID"   : 1,
-	          "itemType" : "Wheelchair",
-	          "status"   : 3,
-	          "fileName" : "../static/img/wheelchair-01.jpg"},
-	         {"userID"   : 1,
-	          "itemType" : "Crutches",
-	          "status"   : 1,
-	          "fileName" : "../static/img/crutch.jpeg"},
-	         {"userID"   : 1,
-	          "itemType" : "Wheelchair",
-	          "status"   : 2,
-            "fileName" : "../static/img/wheelchair-01.jpg"}]
-
-	return render_template('donor.html', user=user,
+  return render_template('donor.html', username=username,
 		                                 title=title,
-		                                 items=items)
+		                                 donations=donations)
 
 @app.route('/request')
 def request():
