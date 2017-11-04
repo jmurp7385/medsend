@@ -10,12 +10,9 @@ body {
 }
 
 #welcome {
-	font-size: 2em;
 	margin: auto;
 	margin-bottom: 5px;
-	text-align: left;
-	vertical-align: middle;
-	line-height: auto;
+	padding: 5px;
 	width: 50%;
 	background-color: #F76C6C;
 	text-shadow: 1px 2px 2px #374785;
@@ -23,6 +20,25 @@ body {
     border-radius: 5px;
 	box-shadow: 2px 2px 5px #374785;
     background-color: #F76C6C;
+}
+
+#welcome-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	grid-template-areas: "text button";
+}
+
+#welcome-text {
+	grid-area: text;
+	text-align: center;
+	font-size: 2em;
+}
+
+#donate-button {
+	grid-area: button;
+	margin: auto;
+	vertical-align: middle;
 }
 
 #gallery {
@@ -48,13 +64,10 @@ body {
 	margin-bottom: 5px;
 }
 
-.galleryImage {
-	
-}
-
 .donationData {
 	text-shadow: 1px 2px 2px #374785;
 	text-align: center;
+	vertical-align: middle;
     border: 10px solid #F8E9A1;
     border-radius: 5px;
 	padding: 5px;
@@ -62,10 +75,15 @@ body {
     background-color: #F76C6C;
 }
 
+.donationDataText {
+	margin:auto;
+	vertical-align: middle;
+	justify-content: center;
+}
+
 .statusText {
 	text-align: center;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin: auto;
 }
 
 #gallery img {
@@ -81,9 +99,14 @@ body {
 
 }
 
-.w3-light-grey {
-	width: 80%;
-	text-align: center;
+.complete {
 	margin: auto;
-	margin-top: 3%;
+	margin-top: 2%;
+    color: green;
+}
+
+.incomplete {
+	margin: auto;
+	margin-top: 2%;
+    color: red;
 }

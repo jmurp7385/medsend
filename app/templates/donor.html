@@ -23,7 +23,16 @@
 	</nav>
 
   <div id="welcome">
-      <p>Welcome, {{username}}!</p>
+    <div id="welcome-grid">
+      <div id="welcome-text">
+        <p>Welcome, {{username}}!</p>
+      </div>
+      <div id="donate-button">
+        <form method="get" action='/donate'>
+          <input type="submit" value="Donate">
+        </form>
+      </div>
+    </div>
   </div>
   <div id="gallery">
   	<div id="galleryGrid">
@@ -32,23 +41,19 @@
     			<img src="../{{donation.image}}" alt="{{donation.item_type}}" />
     		</div>
     		<div class="donationData">
-    			<p class="itemTypeText">{{donation.item_type}}</p>
-	  			{% if donation.date_distributed %}
-	  				<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:100%"></div>
-						</div>
-						<p class="statusText">
-							Successfully Donated
-  					</p>
-	  			{% else %}
-	  				<div class="w3-light-grey w3-round-xlarge">
-							<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:50%"></div>
-						</div>
-	  				<p class="statusText">
-							Awaiting a Recipient
-	 					</p>
-	 				{% endif %}
-   			</div> 
+          <div class="donationDataText">
+    		    <p class="itemTypeText">{{donation.item_type}}</p>
+	  			  {% if donation.date_distributed %}
+						  <p class="statusText complete">
+							 Successfully Donated
+  				    </p>
+	  			  {% else %}
+	  			    <p class="statusText incomplete">
+						    Awaiting a Recipient
+	 				    </p>
+	 				  {% endif %}
+   			  </div>
+        </div> 
     	{% endfor %}
   	</div>
 	</div>

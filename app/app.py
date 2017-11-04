@@ -96,6 +96,10 @@ def donor(userid):
 		                                 title=title,
 		                                 donations=donations)
 
+@app.route('/donate', methods=['GET'])
+def donate():
+  return render_template("donate.html");
+
 @app.route('/request')
 def request_item():
     title = "MedSend"
