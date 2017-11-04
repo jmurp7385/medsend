@@ -36,13 +36,15 @@ def login():
   password = request.form['password']
   if username == '' or password == '':
     return redirect('/')
-  orders = c.execute("SELECT type from users where username=? AND password=?",(username,password))
-  data = c.fetchall()[0][0]
+  orders = c.execute("SELECT id,type from users where username=? AND password=?",(username,password))
+  data = c.fetchall()
   print(data)
-  if data == "donor":
-    return redirect('/donor/1')
+  account_type = data[0][1]
+  userid = str(data[0][0])
+  if data[0][1] == "donor":
+    return redirect('/donor/'+userid)
   else:
-    return redirect('/donee/2')
+    return redirect('/donee/'+userid)
 
 @app.route('/contact')
 def contact():
@@ -52,9 +54,13 @@ def contact():
 def about():
   return render_template('about.html')
 
-@app.route('/new_account')
+@app.route('/new_account', methods=['GET'])
 def new_account():
   return render_template('new_account.html')
+
+@app.route('/new_account', methods=['POST'])
+def new_acc_login():
+  return redirect('/donor/3')
 
 @app.route('/donor/<userid>')
 def donor(userid):

@@ -1,0 +1,54 @@
+.grid-wrapper {
+  display: grid;
+  grid-template-areas: "username username"
+                       "password password"
+                       "password2 password2"
+                       "donor donee"
+                       "register register";
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  grid-template-rows: repeat(5,1fr);
+  grid-auto-rows: minmax(75px, 100px);
+}
+
+#username{
+  grid-area: username;
+}
+
+#password {
+  grid-area: password;
+}
+
+#password2 {
+  grid-area: password2;
+}
+
+#donor {
+  grid-area: donor;
+  margin-top: 5px;
+}
+
+#donee {
+  grid-area: donee;
+  margin-top: 5px;
+}
+
+#register {
+  grid-area: register;
+}
+
+input[type=text], input[type=password] {
+  font-size: 20px;
+}
+
+input[type=radio] {
+  display: block;
+  margin: auto;
+}
+
+p {
+  text-align: center;
+  padding: 0px;
+  margin: 5px;
+}

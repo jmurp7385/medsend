@@ -5,7 +5,7 @@
   <title>MedSend</title>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/new_account.css') }}">
 </head>
 <body>
  <!-- Nav Bar -->
@@ -18,3 +18,20 @@
     </ul>
   </nav>
 
+  <form action="/new_account" method="post">
+    <div class="grid-wrapper">
+      <input type="text"     id="username"   placeholder="Username">
+      <input type="password" id="password"   placeholder="Password">
+      <input type="password" id="password2"  placeholder="Retype Password">
+      <div id="donor">
+        <input type="radio" id="donor" value="donor" name="Donate">
+        <p>Donate</p>
+      </div>
+      <div id="donee">
+        <input type="radio" id="donee" value="donee" name="Request">
+        <p>Request</p>
+      </div>
+      <input type="submit" id="register" value="Register">
+    </div>
+  </form>
+</body>
