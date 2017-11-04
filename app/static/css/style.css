@@ -33,6 +33,11 @@ nav {
   color: white;
   font-size: 30px;
   text-shadow: none;
+  float:left;
+}
+
+.logout {
+  padding-right:15px;
 }
 
 ul {
@@ -66,7 +71,6 @@ li a {
 }
 
 li a:hover:not(.active) {
-  color:#F76C6C;
   text-shadow: none;
-    background-color: white;
+  background-color: #e35858;
 }
