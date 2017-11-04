@@ -17,31 +17,24 @@
 			<h1 class="title">{{title}}</h1>
 		</div>
   	<div id="welcome">
-	  	<p>Welcome, {{user.firstName}}</p>
+	  	<p>Welcome, {{username}}</p>
   	</div>
   	<div id="numItems">
 			<p id="numItemsText">
-  	  	{{user.numDonations}} Items Donated
+  	  	{{donations|length}} Items Donated
   		</p>
   	</div>
   	<div id="gallery">
   		<div id="galleryGrid">
-    		{% for item in items %}
+    		{% for donation in donations %}
     			<div class="galleryImage">
-    				<img src="{{item.fileName}}" alt="{{item.itemType}}" />
+    				<img src="../{{donation.image}}" alt="{{donation.item_type}}" />
     			</div>
     			<div class="donationData">
-    				<p class="itemTypeText">{{item.itemType}}</p>
-	  				{% if item.status == 1 %}
+    				<p class="itemTypeText">{{donation.item_type}}</p>
+	  				{% if donation.date_distributed %}
 	  					<div class="w3-light-grey w3-round-xlarge">
-								<div class="w3-blue w3-round-xlarge" style="height:15px;width:33%"></div>
-	  					</div>
-	  					<p class="statusText">
-	  						Awaiting Dropoff
-	  					</p>
-	  				{% elif item.status == 2 %}
-	  					<div class="w3-light-grey w3-round-xlarge">
-								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:67%"></div>
+								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:50%"></div>
 							</div>
 							<p class="statusText">
 								Waiting for a Recipient
