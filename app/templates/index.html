@@ -3,11 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>MedSend</title>
-  <!-- Bootstrap CDN -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
@@ -20,11 +15,11 @@
     </div>
 
     <div class="new-acc-wrapper">
-      <div class="center-wrapper">
-        <h3 class="">Do you want to ...</h3>
-        <button id="new_donor">Donate</button>
-        <h3>or</h3>
-        <button id="new_donee">Request</button>
+      <div class="new-acc-sub-wrapper">
+        <h3 class="ttl">Do you want to ...</h3>
+        <button id="donate">Donate</button>
+        <h3 class="txt">or</h3>
+        <button id="request">Request</button>
       </div>
     </div>
 

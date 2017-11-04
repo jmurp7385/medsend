@@ -1,10 +1,12 @@
 .grid-wrapper {
   display: grid;
-  grid-template-areas: "recent recent recent recent new new"
-                       "recent recent recent recent new new"
-                       "recent recent recent recent new new"
-                       "recent recent recent recent login login"
-                       "recent recent recent recent login login";
+  grid-template-areas: "recent recent recent recent recent new"
+                       "recent recent recent recent recent new"
+                       "recent recent recent recent recent new"
+                       "recent recent recent recent recent login"
+                       "recent recent recent recent recent login"
+                       "recent recent recent recent recent ."
+                       "recent recent recent recent recent .";
 
   /*grid-template-columns: repeat(3, 1fr);*/
   grid-gap: 10px;
@@ -12,29 +14,52 @@
 }
 
 .recent-donations-wrapper {
-  /*grid-column: 1/3;*/
-  /*grid-row: 1/8;*/
   grid-area: recent;
   background-color: grey;
 }
 
 .new-acc-wrapper {
-  /*grid-column: 3/4;*/
-  /*grid-row: 1/4;*/
   grid-area: new;
   background-color: #f8e9a1;
+  display: grid;
+  grid-template-areas: ". title ."
+                       ". btn_d ."
+                       ". txt ."
+                       ". btn_r .";
 };
 
+.new-acc-sub-wrapper {
+  
+}
+
+.txt {
+  grid-area: txt;
+}
+
+.ttl {
+  grid-area: title;
+}
+
+#donate {
+  grid-area: btn_d
+}
+
+#request{
+  grid-area: btn_r
+}
+
 .center-wrapper {
+  width: 200px;
   position: relative;
-  margin: auto;
 }
 
 .login-wrapper {
-  /*grid-row: 4/5;*/
-  /*grid-column: 3;*/
   grid-area: login;
   background-color: #f76c6c;
+}
+
+h3 {
+  width: 200px;
 }
 
 button {
