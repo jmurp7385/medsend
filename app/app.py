@@ -15,7 +15,7 @@ def test():
 def donor():
 	title = "MedSend"
 	users = [{"firstName" : "Kenny", 
-	        "lastNaValueError: signal only works in main threadme" : "Brawner",
+	        "lastName" : "Brawner",
 	        "numDonations" : 8,
 	        "userID" : 1}]
 	user = users[0]
