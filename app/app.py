@@ -52,6 +52,10 @@ def contact():
 def about():
   return render_template('about.html')
 
+@app.route('/new_account')
+def new_account():
+  return render_template('new_account.html')
+
 @app.route('/donor/<userid>')
 def donor(userid):
   conn = sqlite3.connect(db_path)
@@ -72,25 +76,40 @@ def donor(userid):
 
 @app.route('/request')
 def request_item():
-    wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
-    heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
-    donations = {'car' : ['honda', 'tesla'],
-        'crutches' : ['broken crutches', 'shiny new crutches']}
-    progression = ['processing ', 'request successful', 'ready for pickup', 'received']
     title = "MedSend"
     user = User('john doe')
     return render_template('request.html', user=user, title=title, donations = donations)
 
+def requests_dict_arr(data):
+  donations= []
+  for d in data:
+    item = dict()
+    item['userid'] = d[0]
+    item['item_type'] = d[1]
+    item['icon'] = d[2]
+    item['image'] = d[3]
+    print(d[3])
+    item['date_requested'] = d[4]
+    item['date_received'] = d[5]
+    donations.append(item)
+    print(donations)
+  return donations
+
 @app.route('/donee/<userid>')
 def donee(userid):
-    wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
-    heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
-    donations = {'car' : ['honda', 'tesla'],
-            'crutches' : ['broken crutches', 'shiny new crutches']}
-    progression = ['processing ', 'request successful', 'ready for pickup', 'received']
     title = "MedSend"
-    user = User('john doe')
-    return render_template('donee.html', user=user, title=title, progression=progression, status=2)
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    orders = c.execute("SELECT * from requests where userid == "+userid+"")
+    data = c.fetchall()
+    requests = requests_dict_arr(data)
+    orders = c.execute("SELECT * from users where id == "+userid+"")
+    data = c.fetchall()
+    username = ""
+    for d in data:
+      username = d[1]
+    return render_template('donee.html', username=username, title=title, requests = requests)
+
 
 if __name__=='__main__':
   app.run(debug=True)
@@ -113,7 +132,11 @@ def create_db():
   conn = sqlite3.connect(db_path)
   conn.text_factory = lambda x: unicode(x, "utf-8", "ignore")
   c = conn.cursor()
+  # if remaking database.db comment the below 3 lines
   c.execute("DROP TABLE users")
+  c.execute("DROP TABLE donations")
+  c.execute("DROP TABLE requests")
+
   c.execute('''CREATE TABLE users
                (id int,
                 username text,
@@ -130,7 +153,6 @@ def create_db():
     else:
       c.execute("INSERT INTO users VALUES (?,?,?,?)", row)
 
-  c.execute("DROP TABLE donations")
   c.execute('''CREATE TABLE donations
                (userid int,
                 item_type text,
@@ -148,14 +170,13 @@ def create_db():
     else:
       c.execute("INSERT INTO donations VALUES (?,?,?,?,?)", row)
 
-  c.execute("DROP TABLE requests")
   c.execute('''CREATE TABLE requests
                (userid int,
                 item_type text,
                 icon text,
                 image text,
                 date_requested text,
-                date_recieved text)''')
+                date_received text)''')
   file_name = app.root_path+'/csv/requests.csv'
   f = open(file_name,'rt')
   reader = csv.reader(f)
