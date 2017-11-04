@@ -70,12 +70,14 @@ img {
   grid-area: btn_d;
   align-self: center;
   justify-self: center;
+  font-size: 20px;
 }
 
 #request{
   grid-area: btn_r;
   align-self: center;
   justify-self: center;
+  font-size: 20px;
 }
 
 .center-wrapper {
