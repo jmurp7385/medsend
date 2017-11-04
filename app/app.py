@@ -128,7 +128,11 @@ def create_db():
   conn = sqlite3.connect(db_path)
   conn.text_factory = lambda x: unicode(x, "utf-8", "ignore")
   c = conn.cursor()
+  # if remaking database.db comment the below 3 lines
   c.execute("DROP TABLE users")
+  c.execute("DROP TABLE donations")
+  c.execute("DROP TABLE requests")
+
   c.execute('''CREATE TABLE users
                (id int,
                 username text,
@@ -145,7 +149,6 @@ def create_db():
     else:
       c.execute("INSERT INTO users VALUES (?,?,?,?)", row)
 
-  c.execute("DROP TABLE donations")
   c.execute('''CREATE TABLE donations
                (userid int,
                 item_type text,
@@ -163,7 +166,6 @@ def create_db():
     else:
       c.execute("INSERT INTO donations VALUES (?,?,?,?,?)", row)
 
-  c.execute("DROP TABLE requests")
   c.execute('''CREATE TABLE requests
                (userid int,
                 item_type text,
