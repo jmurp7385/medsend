@@ -8,7 +8,7 @@ def index():
   title = "MedSend"
   return render_template('index.html', title=title)
 
-@app.route('/donor', methods= ["POST"])
+@app.route('/donor')
 def donor():
 	title = "MedSend"
 	user = {"firstName" : "Kenny", "lastName" : "Brawner"}
