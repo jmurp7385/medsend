@@ -20,45 +20,41 @@
 	  	<p>Welcome, {{user.firstName}}</p>
   	</div>
   	<div id="numItems">
-  		<div id="itemsGrid">
-				<p id="numItemsText">
-  	  		{{user.numDonations}}
-  			</p>
-  			<p id="itemsDonatedText">
-      		Items Donated
-    		</p>
-  		</div>
+			<p id="numItemsText">
+  	  	{{user.numDonations}} Items Donated
+  		</p>
   	</div>
   	<div id="gallery">
   		<div id="galleryGrid">
     		{% for item in items %}
     			<div class="galleryImage">
+    				<img src="{{item.fileName}}" alt="{{item.itemType}}" />
+    			</div>
+    			<div class="donationData">
     				<p class="itemTypeText">{{item.itemType}}</p>
-	  				<img src="{{item.fileName}}" alt="{{item.itemType}}" />
 	  				{% if item.status == 1 %}
-	  					<div class="w3-border">
-								<div class="w3-green" style="height:15px;width:33%"></div>
+	  					<div class="w3-light-grey w3-round-xlarge">
+								<div class="w3-blue w3-round-xlarge" style="height:15px;width:33%"></div>
 	  					</div>
-	  					<p>
+	  					<p class="statusText">
 	  						Awaiting Dropoff
 	  					</p>
 	  				{% elif item.status == 2 %}
-	  					<div class="w3-border">
-								<div class="w3-green" style="height:15px;width:67%"></div>
+	  					<div class="w3-light-grey w3-round-xlarge">
+								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:67%"></div>
 							</div>
-								<p>
+							<p class="statusText">
 								Waiting for a Recipient
-	  					</p>
-	  					</div>
+  						</p>
 	  				{% else %}
-	  					<div class="w3-border">
-								<div class="w3-green" style="height:15px;width:100%"></div>
+	  					<div class="w3-light-grey w3-round-xlarge">
+								<div class="w3-blue w3-round-xlarge" style="height:15px;width:100%"></div>
 							</div>
-	  					<p>
+	  					<p class="statusText">
 								Successfully Donated
-	  					</p>
-	  				{% endif %}
-	  			</div> 
+	 						</p>
+	 					{% endif %}
+   				</div> 
     		{% endfor %}
     	</div>
   	</div>

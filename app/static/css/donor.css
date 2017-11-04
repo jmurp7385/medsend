@@ -8,6 +8,10 @@
 	grid-template-columns: 1fr 1fr;
 }
 
+body {
+	color: #24305E;
+}
+
 #header {
 	grid-area: header;
 	height: 50px;
@@ -25,52 +29,45 @@
 
 #numItems {
 	grid-area: numItems;
-	text-align: center;
+	text-align: left;
 	vertical-align: middle;
 	line-height: auto;
 	margin-left: 20%;
+	font-size: 2em;
 }
 
 #gallery {
 	grid-area: gallery;
+	background-color: #F76C6C;
 }
 
 #galleryGrid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 20% 80%;
 	grid-template-rows: auto;
-	grid-gap: 5px;
-}
-
-#itemsGrid {
-	display: grid;
-	justify-content: center;
-	grid-template-areas: "numItemsText itemsDonatedText";
-	grid-template-columns: 10% 1fr;
-	grid-template-rows: auto;
-}
-
-#numItemsText {
-	grid-area: numItemsText;
-	margin: 0px;
-	font-size: 4em;
-	text-align: center;
-	vertical-align: middle;
-	line-height: 100px;
-}
-
-#itemsDonatedText {
-	grid-area: itemsDonatedText;
-	display: inline-block;
-	font-size: 2em;
-	margin: 0px;
-	text-align: left;
-	vertical-align: middle;
-	line-height: 100px;
+	grid-gap: 20px;
+	font-weight: bold;
 }
 
 .itemTypeText {
 	font-size: 1.5em;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	color: #374785;
+}
+
+.galleryImage {
+	border-bottom-width: 100%;
+}
+
+.donationData {
+	vertical-align: middle;
+	margin-top: auto;
+	border-bottom-width: 100%;
+}
+
+.statusText {
 	text-align: center;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -81,17 +78,14 @@
     border: 1px solid #ccc;
     border-radius: 20px;
     margin: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
     width: 50%;
 }
 
-.doneeDisplay {
-	vertical-align: middle;
+.w3-light-grey {
+	width: 80%;
 	text-align: center;
-	color: green;
-}
-
-.noDoneeDisplay {
-	vertical-align: middle;
-	text-align: center;
-	color: gray;
+	margin: auto;
+	margin-top: 3%;
 }
