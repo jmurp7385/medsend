@@ -38,6 +38,8 @@ def login():
     return redirect('/')
   orders = c.execute("SELECT id,type from users where username=? AND password=?",(username,password))
   data = c.fetchall()
+  if data == []:
+    return redirect('/')
   print(data)
   account_type = data[0][1]
   userid = str(data[0][0])
@@ -60,7 +62,21 @@ def new_account():
 
 @app.route('/new_account', methods=['POST'])
 def new_acc_login():
-  return redirect('/donor/3')
+  print(request.form)
+  new_user = []
+  username = request.form['username']
+  password = request.form['password']
+  password2 = request.form['password2']
+  if password != password2 or username == '':
+    return redirect('/new_account',method="get")
+  new_user.append(request.form['username'])
+  new_user.append(password)
+  new_user.append(password2)
+  new_user.append(type)
+  conn = sqlite3.connect(db_path)
+  c = conn.cursor()
+  c.execute("INSERT INTO users VALUES (?,?,?,?)", new_user)
+  return redirect('/donor/4')
 
 @app.route('/donor/<userid>')
 def donor(userid):

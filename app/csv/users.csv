@@ -1,3 +1,4 @@
 id,username,password,type
 1,Bob,password,donor
 2,Rob,alohomora,donee
+3,StateFarm,isthebest,organization
