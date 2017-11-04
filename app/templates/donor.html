@@ -13,16 +13,14 @@
 
 <body>
 	<!-- Nav Bar -->
- 	<div id="header">
- 		<nav>
-  		<ul>
-    	 	<li style="float:left"class="logo"><a class="logo" href="#home">Medsend</a></li>
-     		<li style="padding-right:15px"><a class="active" href="#logout">Logout</a></li>
-     		<li><a href="#contact">Contact</a></li>
-     		<li><a href="#about">About</a></li>
-   		</ul>
-  	</nav>
-	</div>
+	<nav>
+  	<ul>
+    	<li class="logo"><a class="logo active" href="/">Medsend</a></li>
+    	<li class="logout"><a href="/">Logout</a></li>
+    	<li><a href="/contact">Contact</a></li>
+    	<li><a href="/about">About</a></li>
+  	</ul>
+	</nav>
 
 	<div id="pageGrid">
   	<div id="welcome">
@@ -43,17 +41,17 @@
     				<p class="itemTypeText">{{donation.item_type}}</p>
 	  				{% if donation.date_distributed %}
 	  					<div class="w3-light-grey w3-round-xlarge">
-								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:50%"></div>
+								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:100%"></div>
 							</div>
 							<p class="statusText">
-								Waiting for a Recipient
+								Successfully Donated
   						</p>
 	  				{% else %}
 	  					<div class="w3-light-grey w3-round-xlarge">
-								<div class="w3-blue w3-round-xlarge" style="height:15px;width:100%"></div>
+								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:50%"></div>
 							</div>
 	  					<p class="statusText">
-								Successfully Donated
+								Awaiting a Recipient
 	 						</p>
 	 					{% endif %}
    				</div> 
