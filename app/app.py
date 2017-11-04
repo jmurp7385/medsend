@@ -119,12 +119,6 @@ def donor(userid):
 def donate():
   return render_template("donate.html");
 
-@app.route('/request')
-def request_item():
-    title = "MedSend"
-    user = User('john doe')
-    return render_template('request.html', user=user, title=title, donations = donations)
-
 @app.route('/request/<userid>', methods=['GET'])
 def request_item(userid):
     return render_template('request.html',userid=userid)
