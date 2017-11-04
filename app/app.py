@@ -1,5 +1,7 @@
 from flask import Flask
 from flask import render_template
+import sys
+import os
 import csv
 import sqlite3
 import json
@@ -7,27 +9,33 @@ import math
 
 app = Flask(__name__)
 
+db = "db/database.db"
+db_path = os.path.join(app.root_path, db)
+
 @app.route('/')
 def index():
+  print(app.root_path)
+  conn = sqlite3.connect(db_path)
+  c = conn.cursor()
   create_db()
   donations = [
-  { "img": "static/img/crutch.jpeg",
+  { "img": "static/img/crutches-02.jpeg",
     "item": "Crutches",
     "location": "Houston"
   },
-  { "img": "static/img/crutch.jpeg",
+  { "img": "static/img/crutches-01.jpeg",
     "item": "Crutches",
     "location": "Dallas"
   },
-  { "img": "static/img/crutch.jpeg",
+  { "img": "static/img/crutches-01.jpeg",
     "item": "Crutches",
     "location": "Chicago"
   },
-  { "img": "static/img/crutch.jpeg",
+  { "img": "static/img/crutches-01.jpeg",
     "item": "Crutches",
     "location": "New York"
   },
-  { "img": "static/img/crutch.jpeg",
+  { "img": "static/img/crutches-01.jpeg",
     "item": "Crutches",
     "location": "Denver"
   }
@@ -88,7 +96,7 @@ if __name__=='__main__':
   app.run(debug=True)
 
 def create_db():
-  conn = sqlite3.connect('./db/database.db')
+  conn = sqlite3.connect(db_path)
   conn.text_factory = lambda x: unicode(x, "utf-8", "ignore")
   c = conn.cursor()
   c.execute("DROP TABLE users")
@@ -97,7 +105,7 @@ def create_db():
                 username text,
                 password text,
                 type text)''')
-  file_name = '../users.csv'
+  file_name = app.root_path +'/csv/users.csv'
   f = open(file_name,'rt')
   reader = csv.reader(f)
   column_names = True
@@ -115,7 +123,7 @@ def create_db():
                 image text,
                 date_donated text,
                 date_distributed text)''')
-  file_name = '../donations.csv'
+  file_name = app.root_path+'/csv/donations.csv'
   f = open(file_name,'rt')
   reader = csv.reader(f)
   column_names = True
@@ -124,17 +132,17 @@ def create_db():
       column_names = False
       print(row)
     else:
-      c.execute("INSERT INTO users VALUES (?,?,?,?,?)", row)
+      c.execute("INSERT INTO donations VALUES (?,?,?,?,?)", row)
 
   c.execute("DROP TABLE requests")
   c.execute('''CREATE TABLE requests
                (userid int,
                 item_type text,
-                icon text
+                icon text,
                 image text,
                 date_requested text,
                 date_recieved text)''')
-  file_name = '../requests.csv'
+  file_name = app.root_path+'/csv/requests.csv'
   f = open(file_name,'rt')
   reader = csv.reader(f)
   column_names = True
@@ -143,6 +151,6 @@ def create_db():
       column_names = False
       print(row)
     else:
-      c.execute("INSERT INTO users VALUES (?,?,?,?,?,?)", row)
+      c.execute("INSERT INTO requests VALUES (?,?,?,?,?,?)", row)
   conn.commit()
   f.close()
