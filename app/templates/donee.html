@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>MedSend</title>
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/donee.css') }}">
 </head>
 <body>
-	<ul>
-	  <li style="float:left" class="logo"><a class="logo" href="#home">Medsend</a></li>
-	  <li style="padding-right:15px"><a class="active" href="#logout">Logout</a></li>
-	  <li><a href="#contact">Contact</a></li>
-	  <li><a href="#about">About</a></li>
-	</ul>
+ <!-- Nav Bar -->
+ <nav>
+  <ul>
+     <li class="logo"><a class="logo active" href="/">Medsend</a></li>
+     <li class="logout"><a href="/">Logout</a></li>
+     <li><a href="/contact">Contact</a></li>
+     <li><a href="/about">About</a></li>
+   </ul>
+  </nav>
     {% for item in requests %}
     <div class="outergrid" >
     <div class="entry">
@@ -20,15 +24,15 @@
         <img src="../{{item.image}}" alt ="{{item.item_type}}" class="picture">
         <div class="name">
             <h2> {{ item['item_type'] }} </h2>
-                <div class="complete" >
+            <div class="complete" >
                     Request complete!
-                 </div>
+                </div>
                  {% else %}
                  <img src="../{{item.icon}}" alt ="{{item.item_type}}" class="picture">
                  <div class="name">
                      <h2> {{ item['item_type'] }} </h2>
-                         <div class="incomplete" >
-                             Request pending.
+                     <div class="incomplete" >
+                         Request pending.
                          </div>
                  {% endif %}
 
