@@ -86,7 +86,25 @@ def donor(userid):
 
 @app.route('/donee')
 def donee():
-	return render_template('donee.html')
+    wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
+    heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
+    donations = {'car' : ['honda', 'tesla'],
+        'crutches' : ['broken crutches', 'shiny new crutches']}
+    progression = ['processing ', 'request successful', 'ready for pickup', 'received']
+    title = "MedSend"
+    user = User('john doe')
+    return render_template('donee.html', user=user, title=title, donations = donations)
+
+@app.route('/donee_profile')
+def displayProfile():
+    wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
+    heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
+    donations = {'car' : ['honda', 'tesla'],
+            'crutches' : ['broken crutches', 'shiny new crutches']}
+    progression = ['processing ', 'request successful', 'ready for pickup', 'received']
+      title = "MedSend"
+    user = User('john doe')
+    return render_template('donee_profile.html', user=user, title=title, progression=progression, status=2)
 
 if __name__=='__main__':
   app.run(debug=True)
