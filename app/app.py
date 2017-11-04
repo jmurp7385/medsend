@@ -52,6 +52,10 @@ def contact():
 def about():
   return render_template('about.html')
 
+@app.route('/new_account')
+def new_account():
+  return render_template('new_account.html')
+
 @app.route('/donor/<userid>')
 def donor(userid):
   conn = sqlite3.connect(db_path)

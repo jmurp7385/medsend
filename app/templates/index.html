@@ -33,12 +33,14 @@
     {% endfor %}
     </div>
 
-    <div class="new-acc-grid-wrapper">
-      <h2 class="ttl">Do you want to</h2>
-      <button id="donate">Donate an Item</button>
-      <h2 id="or">or</h2>
-      <button id="request">Request an Item</button>
-    </div>
+    <form action="/new_account" method="get">
+      <div class="new-acc-grid-wrapper">
+        <h2 class="ttl">Do you want to</h2>
+        <input id="donate" class='button' type='submit' href='/new_account' value='Donate an Item'>
+        <h2 id="or">or</h2>
+        <input id="request" class='button' type='submit' href='/new_account' value='Request an Item'>
+      </div>
+    </form>
 
     <form action="/login" method="post">
       <div class="login-grid-wrapper">
