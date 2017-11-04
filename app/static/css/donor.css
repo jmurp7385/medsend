@@ -1,0 +1,97 @@
+#pageGrid {
+	display: grid;
+	grid-template-areas: "header header"
+	                     "welcome numItems"
+	                     "gallery gallery";
+
+	grid-template-rows: auto;
+	grid-template-columns: 1fr 1fr;
+}
+
+#header {
+	grid-area: header;
+	height: 50px;
+}
+
+#welcome {
+	grid-area: welcome;
+	font-size: 2em;
+	margin: 0px;
+	margin-right: 20%;
+	text-align: right;
+	vertical-align: middle;
+	line-height: auto;
+}
+
+#numItems {
+	grid-area: numItems;
+	text-align: center;
+	vertical-align: middle;
+	line-height: auto;
+	margin-left: 20%;
+}
+
+#gallery {
+	grid-area: gallery;
+}
+
+#galleryGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	grid-gap: 5px;
+}
+
+#itemsGrid {
+	display: grid;
+	justify-content: center;
+	grid-template-areas: "numItemsText itemsDonatedText";
+	grid-template-columns: 10% 1fr;
+	grid-template-rows: auto;
+}
+
+#numItemsText {
+	grid-area: numItemsText;
+	margin: 0px;
+	font-size: 4em;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 100px;
+}
+
+#itemsDonatedText {
+	grid-area: itemsDonatedText;
+	display: inline-block;
+	font-size: 2em;
+	margin: 0px;
+	text-align: left;
+	vertical-align: middle;
+	line-height: 100px;
+}
+
+.itemTypeText {
+	font-size: 1.5em;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#gallery img {
+	display: block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: auto;
+    width: 50%;
+}
+
+.doneeDisplay {
+	vertical-align: middle;
+	text-align: center;
+	color: green;
+}
+
+.noDoneeDisplay {
+	vertical-align: middle;
+	text-align: center;
+	color: gray;
+}
