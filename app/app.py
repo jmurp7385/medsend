@@ -18,30 +18,7 @@ def index():
   c = conn.cursor()
   orders = c.execute("SELECT * from donations where date_distributed > 2017-01-01")
   data = c.fetchall()
-  # print("data",data)
-  donations = [
-  { "img": "static/img/crutches-02.jpeg",
-    "item": "Crutches",
-    "location": "Houston"
-  },
-  { "img": "static/img/wheelchair-01.jpg",
-    "item": "Wheelchair",
-    "location": "Dallas"
-  },
-  { "img": "static/img/crutches-02.jpeg",
-    "item": "Crutches",
-    "location": "Chicago"
-  },
-  { "img": "static/img/crutches-02.jpeg",
-    "item": "Crutches",
-    "location": "New York"
-  },
-  { "img": "static/img/crutches-02.jpeg",
-    "item": "Crutches",
-    "location": "Denver"
-  }
-  ]
-  donations = donations_json(data)
+  donations = donations_dict_arr(data)
   return render_template('index.html', donations=donations)
 
 @app.route('/donor')
@@ -97,7 +74,7 @@ def donee():
 if __name__=='__main__':
   app.run(debug=True)
 
-def donations_json(data):
+def donations_dict_arr(data):
   donations= []
   for d in data:
     item = dict()
