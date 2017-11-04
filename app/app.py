@@ -1,10 +1,15 @@
 from flask import Flask
 from flask import render_template
+import csv
+import sqlite3
+import json
+import math
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+  create_db()
   donations = [
   { "img": "static/img/crutch.jpeg",
     "item": "Crutches",
@@ -81,3 +86,63 @@ def donee():
 
 if __name__=='__main__':
   app.run(debug=True)
+
+def create_db():
+  conn = sqlite3.connect('./db/database.db')
+  conn.text_factory = lambda x: unicode(x, "utf-8", "ignore")
+  c = conn.cursor()
+  c.execute("DROP TABLE users")
+  c.execute('''CREATE TABLE users
+               (id int,
+                username text,
+                password text,
+                type text)''')
+  file_name = '../users.csv'
+  f = open(file_name,'rt')
+  reader = csv.reader(f)
+  column_names = True
+  for row in reader:
+    if column_names:
+      column_names = False
+      print(row)
+    else:
+      c.execute("INSERT INTO users VALUES (?,?,?,?)", row)
+
+  c.execute("DROP TABLE donations")
+  c.execute('''CREATE TABLE donations
+               (userid int,
+                item_type text,
+                image text,
+                date_donated text,
+                date_distributed text)''')
+  file_name = '../donations.csv'
+  f = open(file_name,'rt')
+  reader = csv.reader(f)
+  column_names = True
+  for row in reader:
+    if column_names:
+      column_names = False
+      print(row)
+    else:
+      c.execute("INSERT INTO users VALUES (?,?,?,?,?)", row)
+
+  c.execute("DROP TABLE requests")
+  c.execute('''CREATE TABLE requests
+               (userid int,
+                item_type text,
+                icon text
+                image text,
+                date_requested text,
+                date_recieved text)''')
+  file_name = '../requests.csv'
+  f = open(file_name,'rt')
+  reader = csv.reader(f)
+  column_names = True
+  for row in reader:
+    if column_names:
+      column_names = False
+      print(row)
+    else:
+      c.execute("INSERT INTO users VALUES (?,?,?,?,?,?)", row)
+  conn.commit()
+  f.close()
