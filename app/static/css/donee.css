@@ -63,6 +63,10 @@ h1 {
 	 box-shadow: 2px 2px 5px #374785;
      background-color: #F76C6C;
  }
+ .welcome {
+     width:50%;
+     margin: auto;
+ }
 
  .complete {
      height: 15px;
