@@ -30,12 +30,14 @@
       <button id="request">Request an Item</button>
     </div>
 
-    <div class="login-grid-wrapper">
-      <h2 class="lgn_title">Already a member?</h2>
-      <input id="username" type="text" name="" id="">
-      <input id="password" type="password" name="" id="">
-      <input type="button" class="lgn_btn" value="Login"></button>
-    </div>
+    <form action="/login" method="post">
+      <div class="login-grid-wrapper">
+        <h2 class="lgn_title">Already a member?</h2>
+        <input id="username" type="text" name="username" placeholder="Username">
+        <input id="password" type="password" name="password" placeholder="Password">
+        <input id="lgn_btn"  type="submit" value="Login" href="">
+      </div>
+    </form>
   </div>
 </body>
 </html>

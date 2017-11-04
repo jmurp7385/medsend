@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify,request,redirect
 from flask import render_template
 import sys
 import os
@@ -21,8 +21,25 @@ def index():
   donations = donations_dict_arr(data)
   return render_template('index.html', donations=donations)
 
-@app.route('/donor')
-def donor():
+@app.route('/login', methods=['POST'])
+def login():
+  print("login",request.form)
+  conn = sqlite3.connect(db_path)
+  c = conn.cursor()
+  username = request.form['username']
+  password = request.form['password']
+  if username == '' or password == '':
+    return redirect('/')
+  orders = c.execute("SELECT type from users where username=? AND password=?",(username,password))
+  data = c.fetchall()[0][0]
+  print(data)
+  if data == "donor":
+    return redirect('/donor/1')
+  else:
+    return redirect('/')
+
+@app.route('/donor/<userid>')
+def donor(userid):
 	title = "MedSend"
 	users = [{"firstName" : "Kenny",
 	        "lastName" : "Brawner",
