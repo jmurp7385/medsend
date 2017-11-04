@@ -32,8 +32,48 @@ def index():
 @app.route('/donor')
 def donor():
 	title = "MedSend"
-	user = {"firstName" : "Kenny", "lastName" : "Brawner"}
-	return render_template('donor.html', user=user, title=title)
+	users = [{"firstName" : "Kenny", 
+	        "lastName" : "Brawner",
+	        "numDonations" : 8,
+	        "userID" : 1}]
+	user = users[0]
+
+	items = [{"userID"   : 1,
+	          "itemType" : "crutches",
+	          "status"   : 1,
+	          "fileName" : "../static/images/crutches-01.jpg"},
+	         {"userID"   : 1,
+	          "itemType" : "wheelchair",
+	          "status"   : 2, 
+	          "fileName" : "../static/images/wheelchair-01.jpg"},
+	         {"userID"   : 1,
+	          "itemType" : "crutches",
+	          "status"   : 3,
+	          "fileName" : "../static/images/crutches-01.jpg"},
+	         {"userID"   : 1,
+	          "itemType" : "wheelchair",
+	          "status"   : 1, 
+	          "fileName" : "../static/images/wheelchair-01.jpg"},
+	         {"userID"   : 1,
+	          "itemType" : "crutches",
+	          "status"   : 2,
+	          "fileName" : "../static/images/crutches-01.jpg"},
+	         {"userID"   : 1,
+	          "itemType" : "wheelchair",
+	          "status"   : 3,
+	          "fileName" : "../static/images/wheelchair-01.jpg"},
+	         {"userID"   : 1,
+	          "itemType" : "crutches",
+	          "status"   : 1,
+	          "fileName" : "../static/images/crutches-01.jpg"},
+	         {"userID"   : 1,
+	          "itemType" : "wheelchair",
+	          "status"   : 2, 
+	          "fileName" : "../static/images/wheelchair-01.jpg"}]
+	           
+	return render_template('donor.html', user=user, 
+		                                 title=title, 
+		                                 items=items)
 
 @app.route('/donee')
 def donee():

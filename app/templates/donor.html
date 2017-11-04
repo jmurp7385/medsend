@@ -1,12 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MedSend</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<meta charset="UTF-8">
+	<title>MedSend</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<link rel="stylesheet" href="{{
+  url_for('static', filename='css/donor.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
+  <!-- w3schools css for Progress Bar -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
 </head>
+
 <body>
-  <h1 class="title">{{title}}</h1>
-  <h2>Welcome, {{user.firstName}}</h2>
+	<div id="pageGrid">
+		<div id="header">
+			<h1 class="title">{{title}}</h1>
+		</div>
+  	<div id="welcome">
+	  	<p>Welcome, {{user.firstName}}</p>
+  	</div>
+  	<div id="numItems">
+  		<div id="itemsGrid">
+				<p id="numItemsText">
+  	  		{{user.numDonations}}
+  			</p>
+  			<p id="itemsDonatedText">
+      		Items Donated
+    		</p>
+  		</div>
+  	</div>
+  	<div id="gallery">
+  		<div id="galleryGrid">
+    		{% for item in items %}
+    			<div class="galleryImage">
+    				<p class="itemTypeText">{{item.itemType}}</p>
+	  				<img src="{{item.fileName}}" alt="{{item.itemType}}" />
+	  				{% if item.status == 1 %}
+	  					<div class="w3-border">
+								<div class="w3-green" style="height:15px;width:33%"></div>
+	  					</div>
+	  					<p>
+	  						Awaiting Dropoff
+	  					</p>
+	  				{% elif item.status == 2 %}
+	  					<div class="w3-border">
+								<div class="w3-green" style="height:15px;width:67%"></div>
+							</div>
+								<p>
+								Waiting for a Recipient
+	  					</p>
+	  					</div>
+	  				{% else %}
+	  					<div class="w3-border">
+								<div class="w3-green" style="height:15px;width:100%"></div>
+							</div>
+	  					<p>
+								Successfully Donated
+	  					</p>
+	  				{% endif %}
+	  			</div> 
+    		{% endfor %}
+    	</div>
+  	</div>
+	</div>
 </body>
 </html>
