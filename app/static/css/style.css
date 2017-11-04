@@ -14,3 +14,62 @@ body {
   text-align: center;
   font-size: 50px;
 }
+
+nav {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+body {
+  width: 90%;
+  margin: auto;
+}
+
+.logo{
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  padding: 5px 35px;
+  text-decoration: none;
+  background-color: none;
+  color: white;
+  font-size: 30px;
+  text-shadow: none;
+}
+
+ul {
+    list-style-type: none;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 10px solid #374785;
+    background-color: #F76C6C;
+}
+
+li {
+    float: right;
+    padding-left: 15px;
+}
+
+li a {
+    border-radius: 5px;
+    display: block;
+    color: white;
+    text-shadow: 1px 2px 2px #374785;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    background-color: #F76C6C;
+}
+
+li a:hover:not(.active) {
+  color:#F76C6C;
+  text-shadow: none;
+    background-color: white;
+}

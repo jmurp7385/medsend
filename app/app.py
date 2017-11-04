@@ -11,6 +11,12 @@ app = Flask(__name__)
 
 db_path = os.path.join(app.root_path, "db/database.db")
 
+class User:
+  def __init__(self, name):
+    self.name = name
+    self.requested = ["car", "crutches", "rock"]
+    self.requested2 = ["wheelchair", "heelies"]
+
 @app.route('/')
 def index():
   create_db()
@@ -84,8 +90,8 @@ def donor(userid):
 		                                 title=title,
 		                                 items=items)
 
-@app.route('/donee')
-def donee():
+@app.route('/request')
+def request():
     wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
     heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
     donations = {'car' : ['honda', 'tesla'],
@@ -93,18 +99,18 @@ def donee():
     progression = ['processing ', 'request successful', 'ready for pickup', 'received']
     title = "MedSend"
     user = User('john doe')
-    return render_template('donee.html', user=user, title=title, donations = donations)
+    return render_template('request.html', user=user, title=title, donations = donations)
 
-@app.route('/donee_profile')
-def displayProfile():
+@app.route('/donee')
+def donee():
     wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
     heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
     donations = {'car' : ['honda', 'tesla'],
             'crutches' : ['broken crutches', 'shiny new crutches']}
     progression = ['processing ', 'request successful', 'ready for pickup', 'received']
-      title = "MedSend"
+    title = "MedSend"
     user = User('john doe')
-    return render_template('donee_profile.html', user=user, title=title, progression=progression, status=2)
+    return render_template('donee.html', user=user, title=title, progression=progression, status=2)
 
 if __name__=='__main__':
   app.run(debug=True)
