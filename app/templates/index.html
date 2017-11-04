@@ -11,21 +11,24 @@
   <h1 class="title">MedSend</h1>
   <div class=grid-wrapper>
     <div class="recent-donations-wrapper">
-
-    </div>
-
-    <div class="new-acc-wrapper">
-      <div class="new-acc-sub-wrapper">
-        <h3 class="ttl">Do you want to ...</h3>
-        <button id="donate">Donate</button>
-        <h3 class="txt">or</h3>
-        <button id="request">Request</button>
+    {% for donation in donations %}
+      <div class="donation-grid-wrapper">
+        <img class="item-img" src={{donation.img}} alt="image goes here">
+        <h2 class="descr">{{donation.item}} were donated in {{donation.location}}</h2>
       </div>
+    {% endfor %}
     </div>
 
-    <div class="login-wrapper">
-      <h3>Already a member?</h3>
-      <button>Login</button>
+    <div class="new-acc-grid-wrapper">
+      <h2 class="ttl">Do you want to</h2>
+      <button id="donate">Donate an Item</button>
+      <h2 id="or">or</h2>
+      <button id="request">Request an Item</button>
+    </div>
+
+    <div class="login-grid-wrapper">
+      <h2 class="lgn_title">Already a member?</h2>
+      <button class="lgn_btn">Login</button>
     </div>
   </div>
 </body>

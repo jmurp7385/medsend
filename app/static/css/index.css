@@ -1,51 +1,81 @@
 .grid-wrapper {
   display: grid;
-  grid-template-areas: "recent recent recent recent recent new"
-                       "recent recent recent recent recent new"
-                       "recent recent recent recent recent new"
-                       "recent recent recent recent recent login"
-                       "recent recent recent recent recent login"
-                       "recent recent recent recent recent ."
-                       "recent recent recent recent recent .";
+  grid-template-areas: "new   recent recent recent "
+                       "new   recent recent recent "
+                       "new   recent recent recent "
+                       "login recent recent recent "
+                       "login recent recent recent ";
 
-  /*grid-template-columns: repeat(3, 1fr);*/
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0px;
+  grid-auto-rows: minmax(50px, 1fr);
 }
 
 .recent-donations-wrapper {
   grid-area: recent;
-  background-color: grey;
+  background-color: #374785;
 }
 
-.new-acc-wrapper {
-  grid-area: new;
-  background-color: #f8e9a1;
+.donation-grid-wrapper {
   display: grid;
-  grid-template-areas: ". title ."
-                       ". btn_d ."
-                       ". txt ."
-                       ". btn_r .";
-};
-
-.new-acc-sub-wrapper {
-  
+  border: 1px;
+  border-style: solid;
+  grid-auto-rows: minmax(50px,100px);
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "img descr";
 }
 
-.txt {
-  grid-area: txt;
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.item-img {
+  grid-area: img;
+}
+
+.descr {
+  grid-area: descr;
+  margin-top: 70px;
+  margin-left: 20px;
+  color: #f8e9a1;
+}
+
+.new-acc-grid-wrapper {
+  grid-area: new;
+  display: grid;
+  background-color: #f76c6c;
+  grid-auto-rows: minmax(50px, 50px);
+  grid-template-areas: "title"
+                       "btn_d"
+                       "or"
+                       "btn_r";
+}
+
+#or {
+  grid-area: or;
+  align-self: center;
+  justify-self: center;
 }
 
 .ttl {
   grid-area: title;
+  align-self: center;
+  justify-self: center;
 }
 
 #donate {
-  grid-area: btn_d
+  grid-area: btn_d;
+  align-self: center;
+  justify-self: center;
 }
 
 #request{
-  grid-area: btn_r
+  grid-area: btn_r;
+  align-self: center;
+  justify-self: center;
 }
 
 .center-wrapper {
@@ -53,13 +83,25 @@
   position: relative;
 }
 
-.login-wrapper {
+.login-grid-wrapper {
   grid-area: login;
-  background-color: #f76c6c;
+  display: grid;
+  background-color: #f8e9a1;
+  grid-auto-rows: minmax(50px, 50px);
+  grid-template-areas: "title"
+                       "lgn_btn";
 }
 
-h3 {
-  width: 200px;
+.lgn_title {
+  grid-area: title;
+  align-self: center;
+  justify-self: center;
+}
+
+.lgn_btn {
+  grid-area: lgn_btn;
+  align-self: center;
+  justify-self: center;
 }
 
 button {
