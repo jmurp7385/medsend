@@ -13,8 +13,8 @@
     <div class="recent-donations-wrapper">
     {% for donation in donations %}
       <div class="donation-grid-wrapper">
-        <img class="item-img" src={{donation.img}} alt="image goes here">
-        <h2 class="descr">{{donation.item}} were donated in {{donation.location}}</h2>
+        <img class="item-img" src={{donation.image}} alt="image goes here">
+        <h2 class="descr">{{donation.item_type}} were distributed on {{donation.date_distributed}}</h2>
       </div>
     {% endfor %}
     </div>

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,jsonify
 from flask import render_template
 import sys
 import os
@@ -9,37 +9,39 @@ import math
 
 app = Flask(__name__)
 
-db = "db/database.db"
-db_path = os.path.join(app.root_path, db)
+db_path = os.path.join(app.root_path, "db/database.db")
 
 @app.route('/')
 def index():
-  print(app.root_path)
+  create_db()
   conn = sqlite3.connect(db_path)
   c = conn.cursor()
-  create_db()
+  orders = c.execute("SELECT * from donations where date_distributed > 2017-01-01")
+  data = c.fetchall()
+  # print("data",data)
   donations = [
   { "img": "static/img/crutches-02.jpeg",
     "item": "Crutches",
     "location": "Houston"
   },
-  { "img": "static/img/crutches-01.jpeg",
-    "item": "Crutches",
+  { "img": "static/img/wheelchair-01.jpg",
+    "item": "Wheelchair",
     "location": "Dallas"
   },
-  { "img": "static/img/crutches-01.jpeg",
+  { "img": "static/img/crutches-02.jpeg",
     "item": "Crutches",
     "location": "Chicago"
   },
-  { "img": "static/img/crutches-01.jpeg",
+  { "img": "static/img/crutches-02.jpeg",
     "item": "Crutches",
     "location": "New York"
   },
-  { "img": "static/img/crutches-01.jpeg",
+  { "img": "static/img/crutches-02.jpeg",
     "item": "Crutches",
     "location": "Denver"
   }
   ]
+  donations = donations_json(data)
   return render_template('index.html', donations=donations)
 
 @app.route('/donor')
@@ -95,6 +97,20 @@ def donee():
 if __name__=='__main__':
   app.run(debug=True)
 
+def donations_json(data):
+  donations= []
+  for d in data:
+    item = dict()
+    item['userid'] = d[0]
+    item['item_type'] = d[1]
+    item['image'] = d[2]
+    item['date_donated'] = d[3]
+    item['date_distributed'] = d[4]
+    donations.append(item)
+    print(donations)
+  return donations
+
+
 def create_db():
   conn = sqlite3.connect(db_path)
   conn.text_factory = lambda x: unicode(x, "utf-8", "ignore")
@@ -112,7 +128,7 @@ def create_db():
   for row in reader:
     if column_names:
       column_names = False
-      print(row)
+      print('ROW SKIPPED',row)
     else:
       c.execute("INSERT INTO users VALUES (?,?,?,?)", row)
 
@@ -130,7 +146,7 @@ def create_db():
   for row in reader:
     if column_names:
       column_names = False
-      print(row)
+      print('ROW SKIPPED',row)
     else:
       c.execute("INSERT INTO donations VALUES (?,?,?,?,?)", row)
 
@@ -149,7 +165,7 @@ def create_db():
   for row in reader:
     if column_names:
       column_names = False
-      print(row)
+      print('ROW SKIPPED',row)
     else:
       c.execute("INSERT INTO requests VALUES (?,?,?,?,?,?)", row)
   conn.commit()
