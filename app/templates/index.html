@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>MedSend</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   {% if title %}
-    <h1>{{title}}</h1>
+    <h1 class="title">{{title}}</h1>
   {% endif %}
 </body>
 </html>
