@@ -8,6 +8,8 @@ body {
 
 .title {
   margin: auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
   color: #f76c6c;
   text-align: center;
 }
