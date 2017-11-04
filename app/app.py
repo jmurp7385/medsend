@@ -63,7 +63,7 @@ def donor(userid):
 		                                 donations=donations)
 
 @app.route('/request')
-def request():
+def request_item():
     wheelchair = {'name' : 'wheelchair', 'status' : 2, 'image' : 'static/img/svg/crutches-icon-01.svg'}
     heelies = {'name' : 'walker', 'status' : 3, 'image' : 'static/img/svg/walker-icon-01.svg'}
     donations = {'car' : ['honda', 'tesla'],
