@@ -5,11 +5,29 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  return render_template('index.html')
-
-@app.route('/test')
-def test():
-  return render_template('test.html')
+  donations = [
+  { "img": "static/img/crutch.jpeg",
+    "item": "Crutches",
+    "location": "Houston"
+  },
+  { "img": "static/img/crutch.jpeg",
+    "item": "Crutches",
+    "location": "Dallas"
+  },
+  { "img": "static/img/crutch.jpeg",
+    "item": "Crutches",
+    "location": "Chicago"
+  },
+  { "img": "static/img/crutch.jpeg",
+    "item": "Crutches",
+    "location": "New York"
+  },
+  { "img": "static/img/crutch.jpeg",
+    "item": "Crutches",
+    "location": "Denver"
+  }
+  ]
+  return render_template('index.html', donations=donations)
 
 @app.route('/donor')
 def donor():
