@@ -1,12 +1,12 @@
 .grid-wrapper {
   display: grid;
-  grid-template-areas: "username username"
-                       "password password"
-                       "password2 password2"
-                       "donor donee"
-                       "register register";
+  grid-template-areas: "username  username     username"
+                       "password  password     password"
+                       "password2 password2    password2"
+                       "donor     organization donee"
+                       "register   register    register";
 
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
   grid-template-rows: repeat(5,1fr);
   grid-auto-rows: minmax(75px, 100px);
@@ -26,6 +26,11 @@
 
 #donor {
   grid-area: donor;
+  margin-top: 5px;
+}
+
+#organization {
+  grid-area: organization;
   margin-top: 5px;
 }
 

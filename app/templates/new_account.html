@@ -20,15 +20,19 @@
 
   <form action="/new_account" method="post">
     <div class="grid-wrapper">
-      <input type="text"     id="username"   placeholder="Username">
-      <input type="password" id="password"   placeholder="Password">
-      <input type="password" id="password2"  placeholder="Retype Password">
+      <input type="text"     id="username"   placeholder="Username" name="username" value="">
+      <input type="password" id="password"   placeholder="Password" name="password" value="">
+      <input type="password" id="password2"  placeholder="Retype Password" name="password2" value="">
       <div id="donor">
-        <input type="radio" id="donor" value="donor" name="Donate">
+        <input type="radio" id="donor" value="donor" name="donate">
         <p>Donate</p>
       </div>
+      <div id="organization">
+        <input type="radio" id="donor" value="organization" name="organization">
+        <p>Organization</p>
+      </div>
       <div id="donee">
-        <input type="radio" id="donee" value="donee" name="Request">
+        <input type="radio" id="donee" value="donee" name="request">
         <p>Request</p>
       </div>
       <input type="submit" id="register" value="Register">
