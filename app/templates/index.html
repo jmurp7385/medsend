@@ -3,24 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>MedSend</title>
-  <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
 </head>
 <body>
   <h1 class="title">MedSend</h1>
   <article>
     <section id="make_account">
-      <h3 class="center">Become A ...</h3>
       <div class="row">
-        <div class="new_account col-md-5 col-md-offset-2" id="new_donor">
-          <button>Doner</button>
-        </div>
-        <div class="new_account col-md-5" id="new_donee">
-          <button>Donee</button>
+        <div class="new_acc_title col-sm-offset-2 col-md-5 col-sm-5">
+          <h3 class="">Do you want to ...</h3>
         </div>
       </div>
+
+      <div class="row">
+        <div class="new_account col-sm-offset-2 col-md-5 col-sm-5">
+          <button id="new_donor">Donate</button>
+        </div>
+        <div class="or col-md-2 col-sm-2">
+          <h3>or</h3>
+        </div>
+        <div class="new_account col-md-5 col-sm-5">
+          <button id="new_donee">Request</button>
+        </div>
+      </div>
+    </section>
+    <div class="border"></div>
+    <section id="login">
+      <div class="row">
+        <div class="col-sm-offset-2 col-md-5 col-sm-5">
+          <h3>Already a member?</h3>
+          <button>Login</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="recent_donations">
+
     </section>
   </article>
 </body>

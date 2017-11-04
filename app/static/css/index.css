@@ -1,5 +1,48 @@
-.new_account {
-  width: 200px;
+.grid-wrapper {
+  display: grid;
   
 }
 
+section {
+  margin-top: 20px;
+}
+
+.new_account {
+  width: 230px;
+  margin-top: 20px;
+  /*padding: 0px;*/
+}
+
+.new_acc_title {
+  /*padding: 0px;*/
+}
+
+h3 {
+  margin-top: 10px;
+}
+
+.border {
+  border-top: 5px;
+  border-radius: 5px;
+  background-color: 
+  width: 80%;
+  margin: auto;
+  border-style: solid;
+  margin-top: 30px;
+}
+
+.or {
+  text-align: center;
+  vertical-align: middle;
+  /*padding: 0px;*/
+  margin-top: 20px;
+  height: 50px;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  background-color: #374785;
+  color: #f8e9a1;
+  border-style: none;
+}
