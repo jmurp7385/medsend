@@ -20,8 +20,6 @@
         <img src="../{{item.image}}" alt ="{{item.item_type}}" class="picture">
         <div class="name">
             <h2> {{ item['item_type'] }} </h2>
-            <span>[status]</span>
-            <div class="progress" >
                 <div class="complete" >
                     Request complete!
                  </div>
@@ -29,16 +27,10 @@
                  <img src="../{{item.icon}}" alt ="{{item.item_type}}" class="picture">
                  <div class="name">
                      <h2> {{ item['item_type'] }} </h2>
-                     <span>[status]</span>
-                     <div class="progress" >
-                         <div class="complete" >
-                             Request complete!
-                         </div>
                          <div class="incomplete" >
                              Request pending.
                          </div>
                  {% endif %}
-            </div>
 
         </div>
     </div>
