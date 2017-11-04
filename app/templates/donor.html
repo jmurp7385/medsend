@@ -22,41 +22,34 @@
   	</ul>
 	</nav>
 
-	<div id="pageGrid">
-  	<div id="welcome">
-	  	<p>Welcome, {{username}}</p>
-  	</div>
-  	<div id="numItems">
-			<p id="numItemsText">
-  	  	{{donations|length}} Items Donated
-  		</p>
-  	</div>
-  	<div id="gallery">
-  		<div id="galleryGrid">
-    		{% for donation in donations %}
-    			<div class="galleryImage">
-    				<img src="../{{donation.image}}" alt="{{donation.item_type}}" />
-    			</div>
-    			<div class="donationData">
-    				<p class="itemTypeText">{{donation.item_type}}</p>
-	  				{% if donation.date_distributed %}
-	  					<div class="w3-light-grey w3-round-xlarge">
-								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:100%"></div>
-							</div>
-							<p class="statusText">
-								Successfully Donated
-  						</p>
-	  				{% else %}
-	  					<div class="w3-light-grey w3-round-xlarge">
-								<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:50%"></div>
-							</div>
-	  					<p class="statusText">
-								Awaiting a Recipient
-	 						</p>
-	 					{% endif %}
-   				</div> 
-    		{% endfor %}
-    	</div>
+  <div id="welcome">
+      <p>Welcome, {{username}}!</p>
+  </div>
+  <div id="gallery">
+  	<div id="galleryGrid">
+    	{% for donation in donations %}
+    		<div class="galleryImage">
+    			<img src="../{{donation.image}}" alt="{{donation.item_type}}" />
+    		</div>
+    		<div class="donationData">
+    			<p class="itemTypeText">{{donation.item_type}}</p>
+	  			{% if donation.date_distributed %}
+	  				<div class="w3-light-grey w3-round-xlarge">
+							<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:100%"></div>
+						</div>
+						<p class="statusText">
+							Successfully Donated
+  					</p>
+	  			{% else %}
+	  				<div class="w3-light-grey w3-round-xlarge">
+							<div class="w3-container w3-blue w3-round-xlarge" style="height:15px;width:50%"></div>
+						</div>
+	  				<p class="statusText">
+							Awaiting a Recipient
+	 					</p>
+	 				{% endif %}
+   			</div> 
+    	{% endfor %}
   	</div>
 	</div>
 </body>
