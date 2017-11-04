@@ -1,3 +1,24 @@
+nav {
+  margin: auto;
+  text-align: center;
+  background-color: #eee;
+  padding: 20px;
+  margin-top: -15px;
+}
+.nav-item {
+  display: inline-block;
+  width: 48%;
+  padding: 10px;
+  margin: 0px;
+  height: 20px;
+  background-color: #ccc;
+}
+
+a {
+  color: #f76c6c;
+  text-decoration: none;
+}
+
 .grid-wrapper {
   display: grid;
   grid-template-areas: "new   recent recent recent"

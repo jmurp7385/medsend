@@ -8,7 +8,17 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-  <h1 class="title">MedSend</h1>
+  <h1 class="title">
+    <a href="/">MedSend</a>
+  </h1>
+  <nav>
+    <h3 class="nav-item" >
+      <a href="">About</a>
+    </h3>
+    <h3 class="nav-item" >
+      <a href="">Contact</a>
+    </h3>
+  </nav>
   <div class=grid-wrapper>
     <div class="recent-donations-wrapper">
     {% for donation in donations %}
