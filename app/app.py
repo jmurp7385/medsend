@@ -86,20 +86,20 @@ def request_item():
     user = User('john doe')
     return render_template('request.html', user=user, title=title, donations = donations)
 
-def requests_dict_arr(data):
-  donations= []
-  for d in data:
-    item = dict()
-    item['userid'] = d[0]
-    item['item_type'] = d[1]
-    item['icon'] = d[2]
-    item['image'] = d[3]
-    print(d[3])
-    item['date_requested'] = d[4]
-    item['date_received'] = d[5]
-    donations.append(item)
-    print(donations)
-  return donations
+@app.route('/organization/<userid>')
+def organization(userid):
+    title = "MedSend"
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    orders = c.execute("SELECT * from requests where userid == "+userid+"")
+    data = c.fetchall()
+    requests = requests_dict_arr(data)
+    orders = c.execute("SELECT * from users where id == "+userid+"")
+    data = c.fetchall()
+    username = ""
+    for d in data:
+      username = d[1]
+    return render_template('organization.html', username=username, title=title, requests = requests)
 
 @app.route('/donee/<userid>')
 def donee(userid):
@@ -119,6 +119,21 @@ def donee(userid):
 
 if __name__=='__main__':
   app.run(debug=True)
+
+def requests_dict_arr(data):
+  donations= []
+  for d in data:
+    item = dict()
+    item['userid'] = d[0]
+    item['item_type'] = d[1]
+    item['icon'] = d[2]
+    item['image'] = d[3]
+    print(d[3])
+    item['date_requested'] = d[4]
+    item['date_received'] = d[5]
+    donations.append(item)
+    print(donations)
+  return donations
 
 def donations_dict_arr(data):
   donations= []

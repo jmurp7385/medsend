@@ -20,22 +20,9 @@
     {% for item in requests %}
     <div class="outergrid" >
     <div class="entry">
-        {% if item.date_received %}
-        <img src="../{{item.image}}" alt ="{{item.item_type}}" class="picture">
+        <img src="../{{item.icon}}" alt ="{{item.item_type}}" class="picture">
         <div class="name">
             <h2> {{ item['item_type'] }} </h2>
-            <div class="complete" >
-                    Request complete!
-                </div>
-                 {% else %}
-                 <img src="../{{item.icon}}" alt ="{{item.item_type}}" class="picture">
-                 <div class="name">
-                     <h2> {{ item['item_type'] }} </h2>
-                     <div class="incomplete" >
-                         Request pending.
-                         </div>
-                 {% endif %}
-
         </div>
     </div>
     </div>
