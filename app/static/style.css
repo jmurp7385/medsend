@@ -1,5 +1,9 @@
+body {
+  background-color: #a8d0e6;
+}
+
 .title {
   margin: auto;
-  color: red;
+  color: #f76c6c;
   text-align: center;
 }
