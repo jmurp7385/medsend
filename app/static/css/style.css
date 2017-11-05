@@ -3,9 +3,27 @@ body {
   width: 90%;
   margin: auto;
 }
+@font-face {
+  font-family: robotoCondensed;
+  src: url(../fonts/RobotoCondensed-Regular.ttf);
+}
+
+@font-face {
+  font-family: robotoCondensed_light;
+  src: url(../fonts/RobotoCondensed-Light.ttf);
+}
+
+@font-face {
+  font-family: robotoCondensed_bold;
+  src: url(../fonts/RobotoCondensed-Bold.ttf);
+}
 
 html {
-  font-family: 'RobotoCondensed-Italic', sans-serif;
+  font-family: robotoCondensed;
+}
+
+input{
+  font-family: robotoCondensed_light;
 }
 
 .center {
@@ -28,6 +46,7 @@ nav {
 }
 
 .logo{
+  font-family: robotoCondensed_bold;
   border-radius: 5px;
   display: block;
   text-align: center;
@@ -35,8 +54,8 @@ nav {
   text-decoration: none;
   background-color: none;
   color: white;
-  font-size: 30px;
-  text-shadow: none;
+  font-size: 40px;
+  text-shadow: 1px 4px 2px#374785;;
   float:left;
 }
 
@@ -64,9 +83,11 @@ li {
 }
 
 li a {
+    font-family: robotoCondensed_bold;
     border-radius: 5px;
     display: block;
     color: white;
+    font-size: 24px;
     text-shadow: 1px 2px 2px #374785;
     text-align: center;
     padding: 20px;

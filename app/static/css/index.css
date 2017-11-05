@@ -24,14 +24,18 @@ a {
 }
 
 .recent-donations-wrapper {
+  border-radius: 10px;
   grid-area: recent;
-  background-color: #374785;
+  margin-left: 5px;
 }
 
 .donation-grid-wrapper {
+  border-radius: 10px;
   display: grid;
   border: 1px;
   border-style: solid;
+  margin-bottom: 5px;
+  background-color: #374785;
   grid-auto-rows: minmax(50px,120px);
   grid-template-columns: 100px 1fr;
   grid-template-areas: "img descr";
@@ -58,6 +62,7 @@ img {
 }
 
 .new-acc-grid-wrapper {
+  border-radius: 10px;
   grid-area: new;
   display: grid;
   background-color: #f76c6c;
@@ -71,15 +76,21 @@ img {
 }
 
 #or {
+  color: white;
+  text-shadow: 2px 2px 5px #000000;
   grid-area: or;
   align-self: center;
   justify-self: center;
+  padding-bottom: 30px;
 }
 
 .ttl {
+  color: white;
+  text-shadow: 2px 2px 5px #000000;
   grid-area: title;
   align-self: center;
   justify-self: center;
+  padding-bottom: 30px;
 }
 
 #donate {
@@ -87,6 +98,7 @@ img {
   align-self: center;
   justify-self: center;
   font-size: 20px;
+  border-radius: 10px;
 }
 
 #request{
@@ -94,6 +106,7 @@ img {
   align-self: center;
   justify-self: center;
   font-size: 20px;
+  border-radius: 10px;
 }
 
 .center-wrapper {
@@ -102,6 +115,7 @@ img {
 }
 
 .login-grid-wrapper {
+  border-radius: 10px;
   grid-area: login;
   display: grid;
   background-color: #f8e9a1;
@@ -130,6 +144,7 @@ img {
   width:200px;
   font-size: 20px;
   height: 80%;
+  border-radius: 5px;
 }
 
 #password {
@@ -138,6 +153,7 @@ img {
   width:200px;
   font-size: 20px;
   height: 80%;
+  border-radius: 5px;
 }
 
 #lgn_btn {
@@ -150,6 +166,8 @@ img {
   color: #f8e9a1;
   border-style: none;
   font-size: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 
 .button {
