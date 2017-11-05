@@ -235,7 +235,8 @@ def create_db():
                 item_type text,
                 image text,
                 date_donated text,
-                date_distributed text)''')
+                date_distributed text,
+                amount int)''')
   file_name = app.root_path+'/csv/donations.csv'
   f = open(file_name,'rt')
   reader = csv.reader(f)
@@ -245,7 +246,7 @@ def create_db():
       column_names = False
       print('ROW SKIPPED',row)
     else:
-      c.execute("INSERT INTO donations VALUES (?,?,?,?,?)", row)
+      c.execute("INSERT INTO donations VALUES (?,?,?,?,?,?)", row)
 
   c.execute('''CREATE TABLE requests
                (userid int,
