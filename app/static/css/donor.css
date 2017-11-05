@@ -105,6 +105,12 @@ body {
     color: green;
 }
 
+.pending {
+	margin: auto;
+	margin-top: 2%;
+    color: yellow;
+}
+
 .incomplete {
 	margin: auto;
 	margin-top: 2%;

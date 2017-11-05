@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>MedSend</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/request.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/donate.css') }}">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
   <div class="form-style-5">
     <form action="/donor/{{userid}}" method="post">
       <fieldset>
-        <legend><span class="number">1</span> Request Supplies</legend>
+        <legend><span class="number">1</span> Donate Supplies</legend>
 
         <label for="job">What supplies do you want to donate?</label>
         <select id="job" name="item_type">

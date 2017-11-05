@@ -47,10 +47,14 @@
 						  <p class="statusText complete">
 							 Successfully Donated
   				    </p>
-	  			  {% else %}
-	  			    <p class="statusText incomplete">
+	  			  {% elif donation.date_donated %}
+	  			    <p class="statusText pending">
 						    Awaiting a Recipient
 	 				    </p>
+            {% else %}
+              <p class="statusText incomplete">
+                Waiting for Drop-off
+              </p>
 	 				  {% endif %}
    			  </div>
         </div> 
