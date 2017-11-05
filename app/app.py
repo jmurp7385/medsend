@@ -63,8 +63,10 @@ def login():
   userid = str(data[0][0])
   if data[0][1] == "donor":
     return redirect('/donor/'+userid)
-  else:
+  elif data[0][1] == "donee":
     return redirect('/donee/'+userid)
+  else:
+    return redirect('/organization/'+userid)
 
 @app.route('/contact')
 def contact():
