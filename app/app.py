@@ -17,22 +17,20 @@ db_path = os.path.join(app.root_path, "db/database.db")
 
 icons = {
   'crutches': 'static/img/svg/crutches-icon-01.svg',
-  'cane': '',
   'wheelchair': 'static/img/svg/wheelchair-icon-01.svg',
   'stretcher': 'static/img/svg/stretcher-icon-01.svg',
   'walker': 'static/img/svg/walker-icon-01.svg',
-  'fracture boot': '',
+  'fracture boot': 'static/img/svg/fractureboot-icon-01.svg',
   'cane': 'static/img/svg/cane-icon-01.svg'
 }
 
 images = {
   'crutches': 'static/img/crutches-02.jpeg',
-  'cane': '',
+  'cane': 'static/img/cane-01.jpeg',
   'wheelchair': 'static/img/wheelchair-01.jpeg',
   'stretcher': 'static/img/stretcher-01.jpeg',
-  'walker': '',
-  'fracture boot': '',
-  'cane':''
+  'walker': 'static/img/walker-01.jpeg',
+  'fracture boot': 'static/img/fractureboot-01.jpeg',
 }
 
 @app.route('/')
