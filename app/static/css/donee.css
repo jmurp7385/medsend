@@ -1,6 +1,9 @@
 *{
      box-sizing: border-box;
 }
+font {
+    font-family: 'Roboto Condensed', sans-serif;
+}
 
 body {
      background-color: #a8do36;

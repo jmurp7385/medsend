@@ -4,6 +4,10 @@ body {
   margin: auto;
 }
 
+html {
+  font-family: 'RobotoCondensed-Italic', sans-serif;
+}
+
 .center {
   margin: auto;
 }
