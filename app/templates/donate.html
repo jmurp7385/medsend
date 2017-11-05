@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MedSend</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/request.css') }}">
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li class="logo"><a class="logo active" href="/">Medsend</a></li>
+      <li class="logout"><a href="/">Logout</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="form-style-5">
+    <form action="/donor/{{userid}}" method="post">
+      <fieldset>
+        <legend><span class="number">1</span> Request Supplies</legend>
+
+        <label for="job">What supplies do you want to donate?</label>
+        <select id="job" name="item_type">
+          <option value="null"></option>
+          <option value="crutches">Crutches</option>
+          <option value="cane">Cane</option>
+          <option value="wheelchair">Wheelchair</option>
+          <option value="walker">Walker</option>
+          <option value="stretcher">Stretcher</option>
+          <option value="fracture boot">Fracture Boot</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="job">How many do you want to give?</label>
+        <select id="job0" name="amount">
+          <option value="0"></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10+">10+</option>
+        </select>
+      </fieldset>
+      <fieldset>
+        <legend><span class="number">2</span>Please, describe your donation in further detail.</legend>
+        <textarea name="field3" placeholder="Describe your situation"></textarea>
+      </fieldset>
+      <input type="submit" value="Apply" />
+    </form>
+  </div>
+
+
+</body>
+
+</html>
