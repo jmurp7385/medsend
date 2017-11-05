@@ -128,15 +128,15 @@ def organization(userid):
     title = "MedSend"
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
-    orders = c.execute("SELECT * from requests where userid == "+userid+"")
+    orders = c.execute("SELECT * from donations where userid == "+userid+"")
     data = c.fetchall()
-    requests = requests_dict_arr(data)
+    donations = donations_dict_arr(data)
     orders = c.execute("SELECT * from users where id == "+userid+"")
     data = c.fetchall()
     username = ""
     for d in data:
       username = d[1]
-    return render_template('organization.html', username=username, title=title, requests = requests)
+    return render_template('organization.html', username=username, title=title, donations = donations)
 
 @app.route('/donee/<userid>', methods=['GET'])
 def donee(userid):
@@ -200,6 +200,7 @@ def donations_dict_arr(data):
     item['image'] = d[2]
     item['date_donated'] = d[3]
     item['date_distributed'] = d[4]
+    item['amount'] = d[5]
     donations.append(item)
     print(donations)
   return donations

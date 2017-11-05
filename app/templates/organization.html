@@ -8,23 +8,30 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/donee.css') }}">
 </head>
 <body>
- <!-- Nav Bar -->
- <nav>
-  <ul>
-     <li class="logo"><a class="logo active" href="/">Medsend</a></li>
-     <li class="logout"><a href="/">Logout</a></li>
-     <li><a href="/contact">Contact</a></li>
-     <li><a href="/about">About</a></li>
-   </ul>
-  </nav>
-    {% for item in requests %}
+    <!-- Nav Bar -->
+    <nav>
+        <ul>
+            <li class="logo"><a class="logo active" href="/">Medsend</a></li>
+            <li class="logout"><a href="/">Logout</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <h1 class="welcome"> Thanks to {{username}}, we have recently received:</h1>
+    {% for item in donations %}
     <div class="outergrid" >
-    <div class="entry">
-        <img src="../{{item.icon}}" alt ="{{item.item_type}}" class="picture">
-        <div class="name">
-            <h2> {{ item['item_type'] }} </h2>
+        <div class="entry">
+            <img src="../{{item.image}}" alt ="{{item.item_type}}" class="picture">
+            <div class="name">
+                {% if item == 'crutches' %}
+                <h2> {{item.item_type}} set{% if item.amount > 1 %}s{%endif%} of crutches </h2>
+                {%else%}
+                <h2> {{item.amount}} {{item.item_type}}{% if item.amount > 1 %}s{%endif%} </h2>
+                <h2> On {{item.date_donated}} </h2>
+            </div>
+                {% endif %}
         </div>
-    </div>
     </div>
     {% endfor %}
 </body>
