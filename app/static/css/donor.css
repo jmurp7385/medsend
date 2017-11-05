@@ -105,6 +105,22 @@ body {
     color: green;
 }
 
+input {
+     width: 200px;
+     height: 50px;
+     background-color: #374785;
+     color: #f8e9a1;
+     border-style: none;
+     font-size: 20px;
+     border-radius: 5px;
+}
+
+.pending {
+	margin: auto;
+	margin-top: 2%;
+    color: yellow;
+}
+
 .incomplete {
 	margin: auto;
 	margin-top: 2%;

@@ -20,8 +20,9 @@ icons = {
   'cane': '',
   'wheelchair': 'static/img/svg/wheelchair-icon-01.svg',
   'stretcher': 'static/img/svg/stretcher-icon-01.svg',
-  'walker': '',
+  'walker': 'static/img/svg/walker-icon-01.svg',
   'fracture boot': '',
+  'cane': 'static/img/svg/cane-icon-01.svg'
 }
 
 images = {
@@ -31,6 +32,7 @@ images = {
   'stretcher': 'static/img/stretcher-01.jpeg',
   'walker': '',
   'fracture boot': '',
+  'cane':''
 }
 
 @app.route('/')
@@ -61,8 +63,10 @@ def login():
   userid = str(data[0][0])
   if data[0][1] == "donor":
     return redirect('/donor/'+userid)
-  else:
+  elif data[0][1] == "donee":
     return redirect('/donee/'+userid)
+  else:
+    return redirect('/organization/'+userid)
 
 @app.route('/contact')
 def contact():
@@ -113,11 +117,12 @@ def donor(userid):
     username = d[1]
   return render_template('donor.html', username=username,
 		                                 title=title,
-		                                 donations=donations)
+		                                 donations=donations,
+                                     userid=userid)
 
-@app.route('/donate', methods=['GET'])
-def donate():
-  return render_template("donate.html");
+@app.route('/donate/<userid>', methods=['GET'])
+def donate_item(userid):
+  return render_template("donate.html", userid=userid)
 
 @app.route('/request/<userid>', methods=['GET'])
 def request_item(userid):
@@ -172,6 +177,26 @@ def donee_requests_update(userid):
     c.execute("INSERT INTO requests VALUES (?,?,?,?,?,?,?)", new_request)
     conn.commit()
     return redirect('/donee/'+userid)
+
+@app.route('/donor/<userid>', methods=['POST'])
+def donor_donations_update(userid):
+  item = request.form['item_type']
+  new_donation = []
+  new_donation.append(userid)
+  new_donation.append(request.form['item_type'])
+  new_donation.append(images[item])
+  now = datetime.now()
+  today = str(now.strftime('%Y/%m/%d'))
+  today = today.replace('/','-')
+  new_donation.append(today)
+  new_donation.append("")
+  new_donation.append(request.form['amount'])
+  print(new_donation)
+  conn = sqlite3.connect(db_path)
+  c = conn.cursor()
+  c.execute("INSERT INTO donations VALUES (?,?,?,?,?,?)", new_donation)
+  conn.commit()
+  return redirect('/donor/'+userid)
 
 
 if __name__=='__main__':

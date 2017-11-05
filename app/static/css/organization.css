@@ -28,7 +28,7 @@ h1 {
 }
 
 .outergrid {
-	padding-top: 30px;
+  padding-top: 30px;
      display: grid;
      width: 100%;
      height: 170px;
@@ -36,37 +36,37 @@ h1 {
 }
 
 .entry {
-     margin: auto;
-     display: grid;
-     width: 50%;
-     height: 157px;
-     grid-template-areas: "left rest";
-     grid-template-columns: 150px 1fr;
-     grid-template-rows: 150px;
-     grid-gap: 7px;
+    margin: auto;
+    display: grid;
+    width: 50%;
+    height: 157px;
+    grid-template-areas: "left rest";
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 150px;
+    grid-gap: 7px;
 }
 
 .picture {
-     width:150px;
-     height:150px;
-     float:right;
-     grid-area: left;
-     border: 10px solid #F8E9A1;
-     border-radius: 5px;
-	padding: 15px;
-	box-shadow: 2px 2px 5px #374785;
-     background-color: #F76C6C;
+    width:150px;
+    height:150px;
+    float:right;
+    grid-area: left;
+    border: 10px solid #F8E9A1;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px #374785;
+    background-color: #F76C6C;
 }
 
 .name {
-	text-shadow: 1px 2px 2px #374785;
-	text-align: center;
-     grid-area: rest;
-     border: 10px solid #F8E9A1;
-     border-radius: 5px;
-	padding: 5px;
-	box-shadow: 2px 2px 5px #374785;
-     background-color: #F76C6C;
+    text-shadow: 1px 2px 2px #374785;
+    text-align: center;
+    grid-area: rest;
+    border: 10px solid #F8E9A1;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 2px 5px #374785;
+    background-color: #F76C6C;
 }
 
 #welcome {
@@ -89,7 +89,8 @@ h1 {
      display: grid;
      grid-template-columns: 1fr 1fr;
      grid-template-rows: auto;
-     grid-template-areas: "text button";
+     grid-template-areas: "button button"
+                          "text text";
 }
 
 #welcome-text {
@@ -97,10 +98,12 @@ h1 {
      text-align: center;
 }
 
-#request-button {
+#donate-button {
      grid-area: button;
      margin: auto;
      vertical-align: middle;
+     margin-top: 20px;
+     margin-bottom: -15px;
 }
 
 input[type=submit] {

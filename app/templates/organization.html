@@ -5,7 +5,7 @@
   <title>MedSend</title>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/donee.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/organization.css') }}">
 </head>
 <body>
     <!-- Nav Bar -->
@@ -18,7 +18,19 @@
         </ul>
     </nav>
 
-    <h1 class="welcome"> Thanks to {{username}}, we have recently received:</h1>
+    <!-- <h1 class="welcome"> Thanks to {{username}}, we have recently received:</h1> -->
+    <div id="welcome">
+      <div id="welcome-grid">
+        <div id="welcome-text">
+          <p> Thanks to {{username}}, we have recently received:</p>
+        </div>
+        <div id="donate-button">
+          <form method="get" action='/donate/{{userid}}'>
+            <input type="submit" value="Donate">
+          </form>
+        </div>
+      </div>
+    </div>
     {% for item in donations %}
     <div class="outergrid" >
         <div class="entry">
