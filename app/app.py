@@ -11,7 +11,7 @@ import math
 
 app = Flask(__name__)
 
-ref_userid = 5
+# ref_userid = 5
 
 db_path = os.path.join(app.root_path, "db/database.db")
 
@@ -81,14 +81,15 @@ def new_account():
 @app.route('/new_account', methods=['POST'])
 def new_acc_login():
   print(request.form)
+  # ref_userid += 1
   new_user = []
   username = request.form['username']
   password = request.form['password']
   password2 = request.form['password2']
   user_type = request.form['type']
   if password != password2 or username == '':
-    return redirect('/new_account',method="get")
-  new_user.append(userid)
+    return redirect('/new_account')
+  new_user.append(str(5*23456%6+124%3))
   new_user.append(username)
   new_user.append(password)
   new_user.append(user_type)
@@ -97,8 +98,7 @@ def new_acc_login():
   c = conn.cursor()
   c.execute("INSERT INTO users VALUES (?,?,?,?)", new_user)
   conn.commit()
-  ref_userid += 1
-  return redirect('/donor/4')
+  return redirect('/donee/'+new_user[0])
 
 @app.route('/donor/<userid>')
 def donor(userid):
@@ -139,7 +139,7 @@ def organization(userid):
     username = ""
     for d in data:
       username = d[1]
-    return render_template('organization.html', username=username, title=title, donations = donations)
+    return render_template('organization.html', username=username, title=title, donations = donations, userid=userid)
 
 @app.route('/donee/<userid>', methods=['GET'])
 def donee(userid):
